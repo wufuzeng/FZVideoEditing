@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'FZVideoEditing_Example' do
+  pod 'FZVideoEditing', :path => '../'
+
+  target 'FZVideoEditing_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
