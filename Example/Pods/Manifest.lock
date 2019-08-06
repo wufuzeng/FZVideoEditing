@@ -1,0 +1,16 @@
+PODS:
+  - FZVideoEditing (0.1.0)
+
+DEPENDENCIES:
+  - FZVideoEditing (from `../`)
+
+EXTERNAL SOURCES:
+  FZVideoEditing:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FZVideoEditing: cacbd1e63f276a98c7ee6b0d2c91fbf82bb5e22f
+
+PODFILE CHECKSUM: 6342024af1c5042f87d4e40fa9cb4d55d05191fb
+
+COCOAPODS: 1.8.0.beta.1

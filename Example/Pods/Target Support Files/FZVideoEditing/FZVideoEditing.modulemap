@@ -1,0 +1,6 @@
+framework module FZVideoEditing {
+  umbrella header "FZVideoEditing-umbrella.h"
+
+  export *
+  module * { export * }
+}
