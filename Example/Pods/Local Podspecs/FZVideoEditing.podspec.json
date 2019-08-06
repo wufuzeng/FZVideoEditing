@@ -1,6 +1,6 @@
 {
   "name": "FZVideoEditing",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "summary": "A short description of FZVideoEditing.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/wufuzeng/FZVideoEditing",
@@ -13,10 +13,24 @@
   },
   "source": {
     "git": "https://github.com/wufuzeng/FZVideoEditing.git",
-    "tag": "0.1.0"
+    "tag": "0.0.1"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "FZVideoEditing/Classes/**/*"
+  "public_header_files": "Pod/Classes/**/FZVideoEditing.h",
+  "source_files": "FZVideoEditing/Classes/**/*.{h,m}",
+  "resource_bundles": {
+    "FZVideoEditing": [
+      "FZVideoEditing/Assets/*.png"
+    ]
+  },
+  "frameworks": [
+    "UIKit",
+    "AssetsLibrary",
+    "AVFoundation",
+    "QuartzCore",
+    "MediaPlayer",
+    "Foundation"
+  ]
 }

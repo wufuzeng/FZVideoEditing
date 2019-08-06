@@ -9,4 +9,10 @@
 #define FZVideoEditing_h
 
 
+#import "FZVideoPlayerView.h"
+#import "FZVideoClipView.h"
+#import "FZVideoEditor.h"
+#import "FZAVCommand.h"
+
+
 #endif /* FZVideoEditing_h */

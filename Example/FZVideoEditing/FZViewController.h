@@ -7,7 +7,10 @@
 //
 
 @import UIKit;
+#import <AVFoundation/AVFoundation.h>
 
 @interface FZViewController : UIViewController
+
+@property (nonatomic, strong) AVAsset* asset;
 
 @end

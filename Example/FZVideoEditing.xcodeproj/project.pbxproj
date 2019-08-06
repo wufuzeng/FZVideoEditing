@@ -22,6 +22,14 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		60C98C5022F969F2006B9B9C /* Music.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4822F969F2006B9B9C /* Music.m4a */; };
+		60C98C5122F969F2006B9B9C /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4922F969F2006B9B9C /* video.mp4 */; };
+		60C98C5222F969F2006B9B9C /* wantMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4A22F969F2006B9B9C /* wantMusic.m4a */; };
+		60C98C5322F969F2006B9B9C /* sample_clip2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4B22F969F2006B9B9C /* sample_clip2.mov */; };
+		60C98C5422F969F2006B9B9C /* cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4C22F969F2006B9B9C /* cover.jpg */; };
+		60C98C5522F969F2006B9B9C /* dance.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4D22F969F2006B9B9C /* dance.mp4 */; };
+		60C98C5622F969F2006B9B9C /* captureMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4E22F969F2006B9B9C /* captureMusic.m4a */; };
+		60C98C5722F969F2006B9B9C /* nnn.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 60C98C4F22F969F2006B9B9C /* nnn.mp4 */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -38,10 +46,10 @@
 
 /* Begin PBXFileReference section */
 		1BA606FBCB198BE559F56CC9 /* Pods-FZVideoEditing_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZVideoEditing_Tests.release.xcconfig"; path = "Target Support Files/Pods-FZVideoEditing_Tests/Pods-FZVideoEditing_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1BB2E840AC98CB048960526E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1BB2E840AC98CB048960526E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		211EBD6D1D38346073C102B9 /* Pods_FZVideoEditing_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZVideoEditing_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F630D53B6796E7A2C6A59C5 /* Pods-FZVideoEditing_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZVideoEditing_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FZVideoEditing_Tests/Pods-FZVideoEditing_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		48F57BA3E7FEB4A8B2F13374 /* FZVideoEditing.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = FZVideoEditing.podspec; path = ../FZVideoEditing.podspec; sourceTree = "<group>"; };
+		48F57BA3E7FEB4A8B2F13374 /* FZVideoEditing.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FZVideoEditing.podspec; path = ../FZVideoEditing.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		561E51DAE5CD164700D16B5D /* Pods-FZVideoEditing_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZVideoEditing_Example.debug.xcconfig"; path = "Target Support Files/Pods-FZVideoEditing_Example/Pods-FZVideoEditing_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* FZVideoEditing_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FZVideoEditing_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,11 +70,19 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		60C98C4822F969F2006B9B9C /* Music.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music.m4a; sourceTree = "<group>"; };
+		60C98C4922F969F2006B9B9C /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
+		60C98C4A22F969F2006B9B9C /* wantMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = wantMusic.m4a; sourceTree = "<group>"; };
+		60C98C4B22F969F2006B9B9C /* sample_clip2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = sample_clip2.mov; sourceTree = "<group>"; };
+		60C98C4C22F969F2006B9B9C /* cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover.jpg; sourceTree = "<group>"; };
+		60C98C4D22F969F2006B9B9C /* dance.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = dance.mp4; sourceTree = "<group>"; };
+		60C98C4E22F969F2006B9B9C /* captureMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = captureMusic.m4a; sourceTree = "<group>"; };
+		60C98C4F22F969F2006B9B9C /* nnn.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = nnn.mp4; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CE34D455751E0AF0E224DF5 /* Pods_FZVideoEditing_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FZVideoEditing_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1838751098B2178E74AEF90 /* Pods-FZVideoEditing_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FZVideoEditing_Example.release.xcconfig"; path = "Target Support Files/Pods-FZVideoEditing_Example/Pods-FZVideoEditing_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C9F2DF4F45FC87F3317551A2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C9F2DF4F45FC87F3317551A2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +148,7 @@
 		6003F593195388D20070C39A /* Example for FZVideoEditing */ = {
 			isa = PBXGroup;
 			children = (
+				60C98C4722F969F2006B9B9C /* Resource */,
 				6003F59C195388D20070C39A /* FZAppDelegate.h */,
 				6003F59D195388D20070C39A /* FZAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -175,6 +192,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		60C98C4722F969F2006B9B9C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				60C98C4822F969F2006B9B9C /* Music.m4a */,
+				60C98C4922F969F2006B9B9C /* video.mp4 */,
+				60C98C4A22F969F2006B9B9C /* wantMusic.m4a */,
+				60C98C4B22F969F2006B9B9C /* sample_clip2.mov */,
+				60C98C4C22F969F2006B9B9C /* cover.jpg */,
+				60C98C4D22F969F2006B9B9C /* dance.mp4 */,
+				60C98C4E22F969F2006B9B9C /* captureMusic.m4a */,
+				60C98C4F22F969F2006B9B9C /* nnn.mp4 */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +225,6 @@
 				2F630D53B6796E7A2C6A59C5 /* Pods-FZVideoEditing_Tests.debug.xcconfig */,
 				1BA606FBCB198BE559F56CC9 /* Pods-FZVideoEditing_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -248,6 +279,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = wufuzeng;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = ZZ7QJD8PMQ;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -258,6 +292,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -277,10 +312,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C98C5722F969F2006B9B9C /* nnn.mp4 in Resources */,
+				60C98C5422F969F2006B9B9C /* cover.jpg in Resources */,
+				60C98C5022F969F2006B9B9C /* Music.m4a in Resources */,
+				60C98C5122F969F2006B9B9C /* video.mp4 in Resources */,
+				60C98C5522F969F2006B9B9C /* dance.mp4 in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				60C98C5322F969F2006B9B9C /* sample_clip2.mov in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				60C98C5222F969F2006B9B9C /* wantMusic.m4a in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				60C98C5622F969F2006B9B9C /* captureMusic.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +537,7 @@
 			baseConfigurationReference = 561E51DAE5CD164700D16B5D /* Pods-FZVideoEditing_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZZ7QJD8PMQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FZVideoEditing/FZVideoEditing-Prefix.pch";
 				INFOPLIST_FILE = "FZVideoEditing/FZVideoEditing-Info.plist";
@@ -510,6 +554,7 @@
 			baseConfigurationReference = B1838751098B2178E74AEF90 /* Pods-FZVideoEditing_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZZ7QJD8PMQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FZVideoEditing/FZVideoEditing-Prefix.pch";
 				INFOPLIST_FILE = "FZVideoEditing/FZVideoEditing-Info.plist";

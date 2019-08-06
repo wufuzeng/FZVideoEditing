@@ -10,6 +10,18 @@
 #endif
 #endif
 
+#import "FZAVAddMusicCommand.h"
+#import "FZAVAddWatermarkCommand.h"
+#import "FZAVCommand.h"
+#import "FZAVExportCommand.h"
+#import "FZAVExtractAudioCommand.h"
+#import "FZVideoEditing.h"
+#import "FZVideoPlayerView.h"
+#import "FZAssetManager.h"
+#import "FZMediaInfo.h"
+#import "FZVideoClipView.h"
+#import "FZVideoEditingBundle.h"
+#import "FZVideoEditor.h"
 
 FOUNDATION_EXPORT double FZVideoEditingVersionNumber;
 FOUNDATION_EXPORT const unsigned char FZVideoEditingVersionString[];

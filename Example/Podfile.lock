@@ -1,5 +1,5 @@
 PODS:
-  - FZVideoEditing (0.1.0)
+  - FZVideoEditing (0.0.1)
 
 DEPENDENCIES:
   - FZVideoEditing (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FZVideoEditing: cacbd1e63f276a98c7ee6b0d2c91fbf82bb5e22f
+  FZVideoEditing: b5e3cfa2fc2d90ca36e882504550fe708c838454
 
 PODFILE CHECKSUM: 6342024af1c5042f87d4e40fa9cb4d55d05191fb
 
