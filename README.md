@@ -5,6 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/FZVideoEditing.svg?style=flat)](https://cocoapods.org/pods/FZVideoEditing)
 [![Platform](https://img.shields.io/cocoapods/p/FZVideoEditing.svg?style=flat)](https://cocoapods.org/pods/FZVideoEditing)
 
+## 效果
+<div>
+<img src="https://github.com/wufuzeng/FZVideoEditing/blob/master/Screenshots/WechatIMG94.jpeg" title="" float=left width = '400px'>
+</div>
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
