@@ -7,7 +7,7 @@
 
 #import "FZVideoEditor.h"
 #import <AVKit/AVKit.h>
-
+#import "FZAssetManager.h"
 @interface FZVideoEditor ()
 
 @property (nonatomic, strong) FZAVCommand* avCommand;
@@ -57,22 +57,146 @@
         }
     }];
 }
+/** 导出裁剪视频 */
+-(void)exportClipAsset:(AVAsset *)asset startTime:(CGFloat)startTime endTime:(CGFloat)endTime completedHandler:(void(^)(NSString *path))completedHandler{
+    
+    // Step 1
+    // Create an outputURL to which the exported movie will be saved
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *outputURL = paths[0];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    [manager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
+    outputURL = [outputURL stringByAppendingPathComponent:@"output.mp4"];
+    // Remove Existing File
+    [manager removeItemAtPath:outputURL error:nil];
+    
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc]initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
+    exportSession.outputURL = [NSURL fileURLWithPath:outputURL];
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    CMTime start = CMTimeMakeWithSeconds(startTime, 1);
+    CMTime duration = CMTimeMakeWithSeconds(endTime - startTime, 1);
+    exportSession.timeRange = CMTimeRangeMake(start, duration);
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        switch (exportSession.status) {
+            case AVAssetExportSessionStatusUnknown :{
+                
+            }break;
+            case AVAssetExportSessionStatusWaiting :{
+                
+            }break;
+            case AVAssetExportSessionStatusExporting :{
+                
+            }break;
+            case AVAssetExportSessionStatusCompleted :{
+                [FZAssetManager saveVideo:outputURL toAlbum:@"Album" completion:^(NSURL *url, NSError *error) {
+                    if (error) {
+                        NSLog(@"save to album failed");
+                    }else{
+                        NSLog(@"save to album success");
+                    }
+                }];
+                if (completedHandler) {
+                    completedHandler(exportSession.outputURL.relativePath);
+                }
+            }break;
+            case AVAssetExportSessionStatusFailed :{
+                
+            }break;
+            case AVAssetExportSessionStatusCancelled :{
+                
+            }break;
+                
+            default:break;
+        }
+    }];
+}
 
-- (void)centerFrameImageWithAsset:(AVAsset*)asset completion:(void (^)(UIImage *image))completion {
-    // AVAssetImageGenerator
+
+/** 获取视频第一帧 */
+- (UIImage*)getVideoPreviewImage:(AVAsset *)asset atTimeSec:(double)timeSec{
+    if (!asset) {
+        return nil;
+    }
+    //获取视频图像实际开始时间 部分视频并非一开始就是有图像的 因此要获取视频的实际开始片段
+    AVAssetTrack *videoTrack = [asset tracksWithMediaType:AVMediaTypeVideo].firstObject;
+    NSArray<AVAssetTrackSegment *> *segs = videoTrack.segments;
+    if (!segs.count) {
+        return nil;
+    }
+    CMTime currentStartTime = kCMTimeZero;
+    for (NSInteger i = 0; i < segs.count; i ++) {
+        if (!segs[i].isEmpty) {
+            currentStartTime = segs[i].timeMapping.target.start;
+            break;
+        }
+    }
+    
+    CMTime coverAtTimeSec = CMTimeMakeWithSeconds(timeSec, asset.duration.timescale);
+    //如果想要获取的视频时间大于视频总时长 或者小于视频实际开始时间 则设置获取视频实际开始时间
+    if (CMTimeCompare(coverAtTimeSec, asset.duration) == 1 ||
+        CMTimeCompare(coverAtTimeSec, currentStartTime) == -1) {
+        coverAtTimeSec = currentStartTime;
+    }
+    
+    AVAssetImageGenerator *assetGen = [AVAssetImageGenerator assetImageGeneratorWithAsset:asset];
+    assetGen.requestedTimeToleranceBefore = kCMTimeZero;
+    assetGen.requestedTimeToleranceAfter = kCMTimeZero;
+    assetGen.appliesPreferredTrackTransform = YES;
+    NSError *error = nil;
+    //获取单帧图片
+    CGImageRef image = [assetGen copyCGImageAtTime:coverAtTimeSec actualTime:NULL error:&error];
+    if (error) {
+        return nil;
+    }
+    UIImage *videoImage = [UIImage imageWithCGImage:image];
+    CGImageRelease(image);
+    return videoImage;
+}
+
+/** 获取中间帧图片 */
+- (void)centerFrameImageWithAsset:(AVAsset*)asset
+                       completion:(void (^)(UIImage *image))completion {
     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    /** 应用首选轨道变换 （截图的时候调整到正确的方向） */
     imageGenerator.appliesPreferredTrackTransform = YES;
     CGFloat assetTimeLong = CMTimeGetSeconds(asset.duration);
     
     NSMutableArray* timeArr = [NSMutableArray array];
-    for (float i = 0; i < assetTimeLong; i+=1) {
-        CMTime midpoint = CMTimeMakeWithSeconds(i, 600);
+    for (NSInteger i = 0; i < assetTimeLong; i++) {
+        /*
+         * CMTime CMTimeMakeWithSeconds(
+         *                              Float64 seconds,   //第几秒的截图,是当前视频播放到的帧数的具体时间
+         *                              int32_t preferredTimeScale //首选的时间尺度 "每秒的帧数"
+         *                              );
+         */
+        CGFloat fps = 600;
+        CMTime midpoint = CMTimeMakeWithSeconds(i, fps);
         NSValue *midTime = [NSValue valueWithCMTime:midpoint];
         [timeArr addObject:midTime];
     }
-    [imageGenerator generateCGImagesAsynchronouslyForTimes:timeArr completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+    /*
+     * 生成图像的实际时间将在[requestedTime-tolerance before,requestedTime+toleranceAfter]范围内，
+     * 可能会与请求的时间有所不同，以提高效率。
+     * 通过kCMTimeZero的公差前和公差后，要求帧精确的图像生成;
+     * 这可能导致额外的解码延迟。
+     * 默认是kCMTimePositiveInfinity。
+     */
+    //防止时间出现偏差
+    imageGenerator.requestedTimeToleranceBefore = kCMTimeZero;
+    imageGenerator.requestedTimeToleranceAfter = kCMTimeZero;
+    
+    NSInteger timesCount = [timeArr count];
+    NSMutableArray *images = [NSMutableArray array];
+    [imageGenerator generateCGImagesAsynchronouslyForTimes:timeArr
+                                         completionHandler:^(CMTime requestedTime,
+                                                             CGImageRef  _Nullable image,
+                                                             CMTime actualTime,
+                                                             AVAssetImageGeneratorResult result,
+                                                             NSError * _Nullable error) {
+ 
         if (result == AVAssetImageGeneratorSucceeded && image != NULL) {
             UIImage *centerFrameImage = [[UIImage alloc] initWithCGImage:image];
+            [images addObject:centerFrameImage];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (completion) {
                     completion(centerFrameImage);
@@ -84,6 +208,153 @@
                     completion(nil);
                 }
             });
+        }
+     
+                                             
+    }];
+}
+
+/** 帧图片 */
+- (void)frameImagesWithAsset:(AVAsset*)asset
+                       count:(NSInteger)count
+                  completion:(void (^)(NSArray <UIImage *>*images))completion {
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    /** 应用首选轨道变换 （截图的时候调整到正确的方向） */
+    imageGenerator.appliesPreferredTrackTransform = YES;
+    CGFloat assetTimeLong = CMTimeGetSeconds(asset.duration);
+    
+    NSInteger inteval = 1;
+    
+    if (count) {
+        inteval = assetTimeLong / count;
+    }
+    
+    NSMutableArray* timeArr = [NSMutableArray array];
+    for (NSInteger i = 0; i < assetTimeLong; i += inteval) {
+        /*
+         * CMTime CMTimeMakeWithSeconds(
+         *                              Float64 seconds,   //第几秒的截图,是当前视频播放到的帧数的具体时间
+         *                              int32_t preferredTimeScale //首选的时间尺度 "每秒的帧数"
+         *                              );
+         */
+        CGFloat fps = 600;
+        CMTime midpoint = CMTimeMakeWithSeconds(i, fps);
+        NSValue *midTime = [NSValue valueWithCMTime:midpoint];
+        [timeArr addObject:midTime];
+    }
+    
+    NSInteger timesCount = [timeArr count];
+    NSMutableArray *images = [NSMutableArray array];
+    //防止时间出现偏差
+    imageGenerator.requestedTimeToleranceBefore = kCMTimeZero;
+    imageGenerator.requestedTimeToleranceAfter = kCMTimeZero;
+    [imageGenerator generateCGImagesAsynchronouslyForTimes:timeArr
+                                         completionHandler:^(CMTime requestedTime,
+                                                             CGImageRef  _Nullable image,
+                                                             CMTime actualTime,
+                                                             AVAssetImageGeneratorResult result,
+                                                             NSError * _Nullable error) {
+                                             
+                                             
+                                             switch (result) {
+                                                 case AVAssetImageGeneratorCancelled:
+                                                     NSLog(@"Cancelled");
+                                                     break;
+                                                 case AVAssetImageGeneratorFailed:
+                                                     NSLog(@"Failed");
+                                                     break;
+                                                 case AVAssetImageGeneratorSucceeded:{
+                                                     NSLog(@"success");
+                                                     if (image != NULL) {
+                                                         UIImage *centerFrameImage = [[UIImage alloc] initWithCGImage:image];
+                                                         [images addObject:centerFrameImage];
+                                                     }
+                                                 }
+                                                     break;
+                                             }
+                                             
+                                             if (requestedTime.value/requestedTime.timescale == (timesCount-1)*inteval) {
+                                                 NSLog(@"completed");
+                                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                                     if (completion) {
+                                                         completion(images.copy);
+                                                     }
+                                                 });
+                                             }
+                                             
+                                         }];
+}
+
+
+/**
+ *  把视频文件拆成图片保存在沙盒中
+ *
+ *  @param fileUrl        本地视频文件URL
+ *  @param fps            拆分时按此帧率进行拆分
+ *  @param completedBlock 所有帧被拆完成后回调
+ */
+- (void)splitVideo:(NSURL *)fileUrl fps:(CGFloat)fps completedBlock:(void(^)(void))completedBlock {
+    if (!fileUrl) {
+        return;
+    }
+    NSDictionary *optDict = @{AVURLAssetPreferPreciseDurationAndTimingKey:@(NO)};
+    AVURLAsset *avasset = [[AVURLAsset alloc] initWithURL:fileUrl options:optDict];
+    
+    CMTime cmtime = avasset.duration; //视频时间信息结构体
+    Float64 durationSeconds = CMTimeGetSeconds(cmtime); //视频总秒数
+    
+    NSMutableArray *times = [NSMutableArray array];
+    Float64 totalFrames = durationSeconds * fps; //获得视频总帧数
+    CMTime timeFrame;
+    for (int i = 1; i <= totalFrames; i++) {
+        /*
+         * CMTime CMTimeMake (
+         *                    int64_t value,    //表示 当前视频播放到的第几桢数
+         *                    int32_t timescale //每秒的帧数
+         *                    );
+         */
+        timeFrame = CMTimeMake(i, fps); //第i帧  帧率
+        NSValue *timeValue = [NSValue valueWithCMTime:timeFrame];
+        [times addObject:timeValue];
+    }
+    
+    NSLog(@"------- start");
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:avasset];
+    //防止时间出现偏差
+    imageGenerator.requestedTimeToleranceBefore = kCMTimeZero;
+    imageGenerator.requestedTimeToleranceAfter = kCMTimeZero;
+    
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSInteger timesCount = [times count];
+    
+    [imageGenerator generateCGImagesAsynchronouslyForTimes:times
+                                       completionHandler:^(CMTime requestedTime,
+                                                           CGImageRef  _Nullable image,
+                                                           CMTime actualTime,
+                                                           AVAssetImageGeneratorResult result,
+                                                           NSError * _Nullable error) {
+                                           
+        printf("current-----: %lld\n", requestedTime.value);
+        switch (result) {
+            case AVAssetImageGeneratorCancelled:
+                NSLog(@"Cancelled");
+                break;
+            case AVAssetImageGeneratorFailed:
+                NSLog(@"Failed");
+                break;
+            case AVAssetImageGeneratorSucceeded: {
+                
+                NSString *filePath = [cachePath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%lld.png",requestedTime.value]];
+                NSData *imgData = UIImagePNGRepresentation([UIImage imageWithCGImage:image]);
+                [imgData writeToFile:filePath atomically:YES];
+                if (requestedTime.value == timesCount) {
+                    NSLog(@"completed");
+                    if (completedBlock) {
+                        completedBlock();
+                    }
+                }
+            }
+                break;
         }
     }];
 }

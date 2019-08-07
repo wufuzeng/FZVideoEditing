@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, FZPlayerState){
 /**
  @brief  the queue of videos to play, if it's null, the functions 'playNext' and 'playPrevious' will be unable;
  */
-@property (nonatomic, strong) NSMutableArray<AVAsset *>* videoQueue;
+@property (nonatomic, strong) NSArray<AVAsset *>* videoQueue;
 /** 自动播放 */
 @property (nonatomic, assign) BOOL autoPlay;
 /** 单循环 */
@@ -48,11 +48,7 @@ typedef NS_ENUM(NSUInteger, FZPlayerState){
 @property (nonatomic, assign) BOOL isUsingRemoteCommand;
 
 @property (nonatomic,   weak)id <FZVideoPlayerViewDelegate> delegate;
-
-- (instancetype)initWithAsset:(AVAsset *)asset frame:(CGRect)frame;
-- (instancetype)initWithVideoURL:(NSURL*)videoURL frame:(CGRect)frame;
-- (instancetype)initWithVideoQueue:(NSMutableArray*)videoQueue frame:(CGRect)frame;
-
+ 
 - (void)play;
 - (void)pause;
 /** 播放速度 */
@@ -62,7 +58,7 @@ typedef NS_ENUM(NSUInteger, FZPlayerState){
 - (void)playNext;
 
 - (void)seekToTime:(CMTime)time;
-
+- (void)seekToSeconds:(CGFloat)seconds isPlay:(BOOL)isPlay;
 - (void)replaceItemWithAsset:(AVAsset *)asset;
 
 - (void)destroy;

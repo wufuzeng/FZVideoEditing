@@ -22,50 +22,29 @@
 
 @implementation FZVideoPlayerView
 
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor blackColor];
+    }
+    return self;
+}
+
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.playerLayer.frame = self.bounds;
+}
+
 #pragma mark -- 播放器初始化配置
 
-- (instancetype)initWithAsset:(AVAsset *)asset frame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor blackColor];
-        self.asset = asset;
-        self.currentPlayItem = [AVPlayerItem playerItemWithAsset:asset];
-        [self configPlayer];
-    }
-    return self;
-}
 
-- (instancetype)initWithVideoURL:(NSURL *)videoURL frame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor blackColor];
-        self.videoURL = videoURL;
-        self.currentPlayItem = [AVPlayerItem playerItemWithURL:videoURL];
-        [self configPlayer];
-    }
-    return self;
-}
 
-- (instancetype)initWithVideoQueue:(NSMutableArray *)videoQueue frame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor blackColor];
-        if (videoQueue.count) {
-            self.videoQueue = videoQueue;
-            if ([[videoQueue firstObject] isKindOfClass:[AVAsset class]]) {
-                self.currentPlayItem = [AVPlayerItem playerItemWithAsset:videoQueue.firstObject];
-                [self configPlayer];
-            }else{
-                return nil;
-            }
-        }else{
-            return nil;
-        }
-    }
-    return self;
-}
+
 
 - (void)configPlayer{
     self.player = [AVPlayer playerWithPlayerItem:self.currentPlayItem];
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
-    self.playerLayer.frame = self.bounds;
+    //self.playerLayer.frame = self.bounds;
     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     [self.layer addSublayer:self.playerLayer];
     self.playerState = FZPlayerStateReadyToPlay;
@@ -239,6 +218,26 @@
     [self.player seekToTime:time];
 }
 
+- (void)seekToSeconds:(CGFloat)seconds isPlay:(BOOL)isPlay{
+    [self.player pause];
+    
+    CMTime time = CMTimeMakeWithSeconds(seconds, 600);
+    [self.player seekToTime:time];
+    if (isPlay && self.player.status == AVPlayerStatusReadyToPlay) {
+        [self.player play];
+    }else{
+        [self.player pause];
+    }
+//    __weak __typeof(self) weakSelf = self;
+//    [self.player seekToTime:time completionHandler:^(BOOL finished) {
+//        if (isPlay && weakSelf.player.status == AVPlayerStatusReadyToPlay) {
+//            [weakSelf.player play];
+//        }else{
+//            [weakSelf.player pause];
+//        }
+//    }];
+}
+
 - (void)destroy{
     [self pause];
     self.player = nil;
@@ -306,7 +305,15 @@
     [self.player replaceCurrentItemWithPlayerItem:self.currentPlayItem];
     [self configPlayer];
 }
-
+-(void)setVideoQueue:(NSArray<AVAsset *> *)videoQueue{
+    if (videoQueue.count) {
+        _videoQueue = videoQueue;
+        if ([[videoQueue firstObject] isKindOfClass:[AVAsset class]]) {
+            self.currentPlayItem = [AVPlayerItem playerItemWithAsset:videoQueue.firstObject];
+            [self configPlayer];
+        }
+    }
+}
 - (void)replaceItemWithAsset:(AVAsset *)asset{
     self.currentPlayItem = [AVPlayerItem playerItemWithAsset:asset];
     [self.player replaceCurrentItemWithPlayerItem:self.currentPlayItem];

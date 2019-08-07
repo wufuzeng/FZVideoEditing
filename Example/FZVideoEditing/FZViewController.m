@@ -12,47 +12,29 @@
 
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
-
-@interface FZDisplayCell : UICollectionViewCell
-
-@property (nonatomic, strong) UIImageView* imageView;
-
-- (void)setContentImage:(UIImage*)image;
-@end
-
-@implementation FZDisplayCell
-
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.contentView addSubview:self.imageView];
-    }
-    return self;
-}
-
--(void)setContentImage:(UIImage *)image{
-    self.imageView.image = image;
-}
-
-@end
-
+ 
 @interface FZViewController ()
 <
-UICollectionViewDelegate,
-UICollectionViewDataSource,
-UICollectionViewDelegateFlowLayout,
-FZVideoPlayerViewDelegate
+FZVideoPlayerViewDelegate,
+FZVideoClipViewDelegate,
+FZVideoDisplayViewDelegate
 >
-@property (nonatomic, strong) FZVideoPlayerView* player;
-@property (nonatomic, strong) FZVideoEditor* videoEditor;
 
-@property (nonatomic, strong) UICollectionView* collectionView;
-@property (nonatomic, strong) NSMutableArray* images;
-
-@property (nonatomic, strong) NSMutableArray* videoQueue;
-
+@property (nonatomic,strong) FZVideoPlayerView* player;
+@property (nonatomic,strong) FZVideoEditor* videoEditor;
+@property (nonatomic,strong) FZVideoDisplayView *displayView;
 @property (nonatomic,strong) FZVideoClipView *videoClipView;
+
+@property (nonatomic,strong) NSMutableArray* images;
+@property (nonatomic,strong) NSMutableArray* videoQueue;
+
+@property (nonatomic,assign) CGFloat beginProgress;
+@property (nonatomic,assign) CGFloat endProgress;
+
+@property (nonatomic,strong) UIButton *btn_back;
+@property (nonatomic,strong) UIButton *btn_more;
+
+@property (nonatomic,assign) BOOL isDragging;
 
 @end
 
@@ -61,89 +43,56 @@ FZVideoPlayerViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    self.images = [NSMutableArray array];
-    self.videoEditor = [[FZVideoEditor alloc] init];
-    
-    //    self.player = [[FZVideoPlayerView alloc] initWithAsset:self.asset frame:CGRectMake(0, 40, KScreenWidth, KScreenWidth)];
-    
-    NSMutableArray* videoQueue = [NSMutableArray array];
-    self.videoQueue = videoQueue;
-    NSString *firstVideoPath = [[NSBundle mainBundle] pathForResource:@"nnn" ofType:@"mp4"];
-    AVAsset* asset1 = [AVAsset assetWithURL:[NSURL fileURLWithPath:firstVideoPath]] ;
-    
-    NSString *secondVideoPath = [[NSBundle mainBundle] pathForResource:@"video" ofType:@"mp4"];
-    AVAsset* asset2 = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:secondVideoPath] options:nil];
-    
-    NSString *thirdVideoPath = [[NSBundle mainBundle] pathForResource:@"dance" ofType:@"mp4"];
-    AVAsset* asset3 = [AVAsset assetWithURL:[NSURL fileURLWithPath:thirdVideoPath]] ;
-    
-    [videoQueue addObject:asset1];
-    [videoQueue addObject:asset2];
-    [videoQueue addObject:asset3];
-    
-    self.player = [[FZVideoPlayerView alloc] initWithVideoQueue:videoQueue frame:CGRectMake(0, 40, KScreenWidth, KScreenWidth)];
-    
-    self.player.isUsingRemoteCommand = YES;
-    self.player.singleCirclePlay = NO;
-    self.player.delegate = self;
-    [self.view addSubview:self.player];
+ 
+    [self player];
+    [self videoClipView];
+    [self displayView];
+    [self btn_back];
+    [self btn_more];
     [self.player play];
-    
-    
-    self.videoClipView = [[FZVideoClipView alloc]initWithFrame:CGRectMake(0, 300, KScreenWidth, 60)];
-    [self.view addSubview:self.videoClipView];
-    
-    
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    flowLayout.minimumLineSpacing = 0;
-    flowLayout.itemSize = CGSizeMake(85, 85);
-    flowLayout.headerReferenceSize = CGSizeMake(KScreenWidth/2+1, 85);
-    
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(-1, KScreenWidth+60+10, KScreenWidth+2, 85) collectionViewLayout:flowLayout];
-    self.collectionView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.6];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-    [self.view addSubview:self.collectionView];
-    self.collectionView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.collectionView.layer.borderWidth = 1;
-    self.collectionView.layer.masksToBounds = YES;
-    
-    [self.collectionView registerClass:[FZDisplayCell class] forCellWithReuseIdentifier:@"cell"];
-    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionHeaderView"];
-    [self.collectionView registerClass:[UICollectionElementKindSectionFooter class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"collectionFooterView"];
-    self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.bounces = NO;
-    
-    UIView* lineView = [[UIView alloc] initWithFrame:CGRectMake(KScreenWidth/2-1, self.collectionView.frame.origin.y, 2, self.collectionView.frame.size.height)];
-    lineView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:lineView];
-    
-    UIButton* addMusicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addMusicBtn.frame = CGRectMake(35, KScreenHeight - 90, 100, 45);
-    [addMusicBtn setTitle:@"add music" forState:UIControlStateNormal];
-    [addMusicBtn addTarget:self action:@selector(addMusic) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addMusicBtn];
-    
-    UIButton* addWatermarkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addWatermarkBtn.frame = CGRectMake(170, KScreenHeight - 90, 45, 45);
-    [addWatermarkBtn setTitle:@"水印" forState:UIControlStateNormal];
-    [addWatermarkBtn addTarget:self action:@selector(addWatermark) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addWatermarkBtn];
-    
-    UIButton* exportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    exportBtn.frame = CGRectMake(KScreenWidth - 135, KScreenHeight - 90, 100, 45);
-    [exportBtn setTitle:@"export" forState:UIControlStateNormal];
-    [exportBtn addTarget:self action:@selector(export) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:exportBtn];
-    
-    UIButton* backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(15, 10, 45, 20);
-    [backBtn setTitle:@"back" forState:UIControlStateNormal];
-    [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backBtn];
 }
+
+#pragma mark -- Button Action --
+-(void)backAction:(UIButton *)sender{
+    [self.player destroy];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)moreAction:(UIButton *)sender{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"more" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"添加背景音乐" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        __weak typeof(self) weakSelf = self;
+        [self.videoEditor addMusicToAsset:self.asset completion:^(FZAVCommand *avCommand) {
+            [weakSelf.player replaceItemWithAsset:avCommand.mutableComposition];
+        }];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"添加水印" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        __weak typeof(self) weakSelf = self;
+        [self.videoEditor addWatermark:FZWatermarkTypeImage inAsset:self.asset completion:^(FZAVCommand *avCommand) {
+            //we have to create a layer manually added to the playerview, otherwise it will not show
+            [weakSelf.player replaceItemWithAsset:avCommand.mutableComposition];
+        }];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"导出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //[self.videoEditor exportAsset:self.asset];
+        CGFloat assetTimeLong = CMTimeGetSeconds(self.asset.duration);
+        CGFloat beginTime = assetTimeLong * self.beginProgress;
+        CGFloat endTime = assetTimeLong * self.endProgress;
+        [self.videoEditor exportClipAsset:self.asset startTime:beginTime endTime:endTime completedHandler:^(NSString * _Nonnull path) {
+            
+        }];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+}
+
+
 
 #pragma mark -- FZVideoPlayerDelegate
 
@@ -156,7 +105,21 @@ FZVideoPlayerViewDelegate
         if (timeLong == 0 || isnan(timeLong)) {
             timeLong = 1;
         }
-        [self.collectionView setContentOffset:CGPointMake(85*self.images.count*currentTime/timeLong, 0)];
+        
+        CGFloat beginTime = timeLong * self.beginProgress;
+        CGFloat endTime = timeLong * self.endProgress;
+        
+        if (currentTime >= endTime ||
+            currentTime >= timeLong) {
+            [self.player seekToTime:CMTimeMakeWithSeconds(beginTime, NSEC_PER_SEC)];
+            CGFloat offsetX = self.displayView.collectionView.contentSize.width * beginTime/timeLong - CGRectGetWidth(self.displayView.collectionView.frame) /2.0;
+            [self.displayView.collectionView setContentOffset:CGPointMake(offsetX, 0)];
+        }else{
+            CGFloat offsetX = self.displayView.collectionView.contentSize.width * currentTime/timeLong - CGRectGetWidth(self.displayView.collectionView.frame) /2.0;
+            [self.displayView.collectionView setContentOffset:CGPointMake(offsetX, 0)];
+        }
+        
+        
     }
 }
 
@@ -166,75 +129,192 @@ FZVideoPlayerViewDelegate
     AVAsset* asset = [self.videoQueue objectAtIndex:index];
     self.asset = asset;
     [self.images removeAllObjects];
-    [self.videoEditor centerFrameImageWithAsset:asset completion:^(UIImage *image) {
-        [self.images addObject:image];
-        [self.collectionView reloadData];
+    __weak __typeof(self) weakSelf = self;
+    [self.videoEditor frameImagesWithAsset:asset count:10 completion:^(NSArray<UIImage *> * _Nonnull images) {
+        weakSelf.videoClipView.images = images;
+        [weakSelf.videoClipView.collectionView reloadData];
     }];
+    
+    [self.videoEditor frameImagesWithAsset:self.asset count:0 completion:^(NSArray<UIImage *> * _Nonnull images) {
+        weakSelf.displayView.images = images;
+        [weakSelf.displayView.collectionView reloadData];
+    }];
+    
+//    [self.videoEditor centerFrameImageWithAsset:asset completion:^(UIImage *image) {
+//
+//        [self.images addObject:image];
+//        self.displayView.images = self.images;
+//        [self.displayView.collectionView reloadData];
+//    }];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.images.count;
+#pragma mark –- FZVideoClipViewDelegate --
+-(void)clipView:(FZVideoClipView *)clipView begin:(CGFloat)begain isOver:(BOOL)isOver{
+    self.beginProgress = begain;
+    self.isDragging = !isOver;
+    CGFloat assetTimeLong = CMTimeGetSeconds(self.asset.duration);
+    CGFloat beginTime = assetTimeLong * self.beginProgress;
+    [self.player seekToSeconds:beginTime isPlay:isOver];
 }
-
-- (FZDisplayCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    FZDisplayCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    UIImage* image = self.images[indexPath.row];
-    [cell setContentImage:image];
-    return cell;
+-(void)clipView:(FZVideoClipView *)clipView end:(CGFloat)end isOver:(BOOL)isOver{
+    self.endProgress = end;
+    self.isDragging = !isOver;
+    CGFloat assetTimeLong = CMTimeGetSeconds(self.asset.duration);
+    CGFloat beginTime = assetTimeLong * self.beginProgress;
+    CGFloat endTime = assetTimeLong * self.endProgress;
+    [self.player seekToSeconds:isOver?beginTime:endTime isPlay:isOver];
 }
+#pragma mark –- FZVideoDisplayViewDelegate --
 
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    if (kind == UICollectionElementKindSectionHeader) {
-        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionHeaderView" forIndexPath:indexPath];
-        headerView.backgroundColor = [UIColor clearColor];
-        return headerView;
-    }else if (kind == UICollectionElementKindSectionFooter) {
-        UICollectionReusableView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"collectionFooterView" forIndexPath:indexPath];
-        footerView.backgroundColor = [UIColor clearColor];
-        return footerView;
-    }
-    return nil;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)displayView:(FZVideoDisplayView *)displayView scrollViewDidScroll:(UIScrollView *)scrollView{
     if (self.player.playerState == FZPlayerStateStop) {
+        
         CGPoint offset = scrollView.contentOffset;
-        NSTimeInterval seconds =  offset.x*CMTimeGetSeconds(self.asset.duration)/(85*self.images.count);
-        CMTime seekTime = CMTimeMakeWithSeconds(seconds, self.player.currentPlayItem.duration.timescale);
-        [self.player seekToTime:seekTime];
+        CGFloat timeLong = CMTimeGetSeconds(self.asset.duration);
+        NSTimeInterval seconds =  offset.x * timeLong / displayView.collectionView.contentSize.width;
+        
+        CGFloat beginTime = timeLong * self.beginProgress;
+        CGFloat endTime = timeLong * self.endProgress;
+        
+        if (seconds <= beginTime ||
+            seconds >= endTime) { 
+            [self.player seekToTime:CMTimeMakeWithSeconds(beginTime, NSEC_PER_SEC)];
+        }
     }
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+- (void)displayView:(FZVideoDisplayView *)displayView scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.player pause];
 }
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+- (void)displayView:(FZVideoDisplayView *)displayView scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [self.player play];
 }
 
-- (void)addMusic{
-    __weak typeof(self) weakSelf = self;
-    [self.videoEditor addMusicToAsset:self.asset completion:^(FZAVCommand *avCommand) {
-        [weakSelf.player replaceItemWithAsset:avCommand.mutableComposition];
-    }];
+
+#pragma mark -- Lazy Func --
+
+-(FZVideoPlayerView *)player{
+    if (_player == nil) {
+        _player = [[FZVideoPlayerView alloc] init];
+        _player.isUsingRemoteCommand = YES;
+        _player.singleCirclePlay = NO;
+        _player.delegate = self;
+        _player.videoQueue = self.videoQueue;
+        [self.view addSubview:_player];
+        _player.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_player attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:64];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_player attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_player attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.displayView attribute:NSLayoutAttributeTop multiplier:1.0 constant:-10];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_player attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+       
+        [self.view addConstraints:@[top,left,bottom,right]];
+    }
+    return _player;
 }
 
-- (void)addWatermark{
-    __weak typeof(self) weakSelf = self;
-    [self.videoEditor addWatermark:FZWatermarkTypeImage inAsset:self.asset completion:^(FZAVCommand *avCommand) {
-        //we have to create a layer manually added to the playerview, otherwise it will not show
-        [weakSelf.player replaceItemWithAsset:avCommand.mutableComposition];
-    }];
+-(FZVideoDisplayView *)displayView{
+    if (_displayView == nil) {
+        _displayView = [[FZVideoDisplayView alloc]init];
+        _displayView.delegate = self;
+        _displayView.layer.borderColor = [UIColor whiteColor].CGColor;
+        _displayView.layer.borderWidth = 1;
+        _displayView.layer.masksToBounds = YES;
+        [self.view addSubview:_displayView];
+        _displayView.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_displayView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_displayView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.videoClipView attribute:NSLayoutAttributeTop multiplier:1.0 constant:-10];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_displayView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:_displayView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:85];
+        [self.view addConstraints:@[left,bottom,right,height]];
+    }
+    return _displayView;
 }
 
-- (void)export{
-    [self.videoEditor exportAsset:self.asset];
+-(FZVideoClipView *)videoClipView{
+    if (_videoClipView == nil) {
+        _videoClipView = [[FZVideoClipView alloc]init];
+        _videoClipView.delegate = self;
+        [self.view addSubview:_videoClipView];
+        _videoClipView.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_videoClipView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_videoClipView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-30];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_videoClipView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:_videoClipView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:40];
+        [self.view addConstraints:@[left,bottom,right,height]];
+    }
+    return _videoClipView;
 }
 
-- (void)back{
-    [self.player destroy];
-    [self dismissViewControllerAnimated:YES completion:nil];
+-(UIButton *)btn_back{
+    if (_btn_back == nil) {
+        _btn_back = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btn_back.frame = CGRectMake(15, 10, 45, 20);
+        [_btn_back setTitle:@"back" forState:UIControlStateNormal];
+        [_btn_back setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_btn_back addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_btn_back];
+    }
+    return _btn_back;
+}
+
+-(UIButton *)btn_more{
+    if (_btn_more == nil) {
+        _btn_more = [UIButton buttonWithType:UIButtonTypeCustom];
+        _btn_more.frame = CGRectMake(KScreenWidth - 45 - 15, 10, 45, 20);
+        [_btn_more setTitle:@"more" forState:UIControlStateNormal];
+        [_btn_more setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_btn_more addTarget:self action:@selector(moreAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_btn_more];
+    }
+    return _btn_more;
+}
+
+-(NSMutableArray *)videoQueue{
+    if (_videoQueue == nil) {
+        _videoQueue = [NSMutableArray array];
+        
+//        NSString *firstVideoPath = [[NSBundle mainBundle] pathForResource:@"nnn" ofType:@"mp4"];
+//        AVAsset* asset1 = [AVAsset assetWithURL:[NSURL fileURLWithPath:firstVideoPath]] ;
+        
+//        NSString *secondVideoPath = [[NSBundle mainBundle] pathForResource:@"video" ofType:@"mp4"];
+//        AVAsset* asset2 = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:secondVideoPath] options:nil];
+//
+//        NSString *thirdVideoPath = [[NSBundle mainBundle] pathForResource:@"dance" ofType:@"mp4"];
+//        AVAsset* asset3 = [AVAsset assetWithURL:[NSURL fileURLWithPath:thirdVideoPath]] ;
+
+        NSString *fourVideoPath = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"mov"];
+        AVAsset* asset4 = [AVAsset assetWithURL:[NSURL fileURLWithPath:fourVideoPath]] ;
+        
+//        [_videoQueue addObject:asset1];
+//        [_videoQueue addObject:asset2];
+//        [_videoQueue addObject:asset3];
+        [_videoQueue addObject:asset4];
+    }
+    return _videoQueue;
+}
+
+-(NSMutableArray *)images{
+    if (_images == nil) {
+        _images = [NSMutableArray array];
+    }
+    return _images;
+}
+
+-(FZVideoEditor *)videoEditor{
+    if (_videoEditor == nil) {
+        _videoEditor = [[FZVideoEditor alloc] init];
+    }
+    return _videoEditor;
+}
+
+
+
+-(CGFloat)endProgress{
+    if (_endProgress <= 0) {
+        _endProgress = 1;
+    }
+    return _endProgress;
 }
 
 - (void)dealloc{

@@ -53,7 +53,7 @@
 }
 
 - (void)writeVideoToPhotoLibrary:(NSString *)url{
-    [FZAssetManager saveVideo:url toAlbum:@"RXAlbum" completion:^(NSURL *url, NSError *error) {
+    [FZAssetManager saveVideo:url toAlbum:@"Album" completion:^(NSURL *url, NSError *error) {
         if (error) {
             NSLog(@"save to album failed");
         }else{

@@ -16,6 +16,7 @@
 #import "FZAVExportCommand.h"
 #import "FZAVExtractAudioCommand.h"
 #import "FZVideoEditing.h"
+#import "FZVideoDisplayView.h"
 #import "FZVideoPlayerView.h"
 #import "FZAssetManager.h"
 #import "FZMediaInfo.h"

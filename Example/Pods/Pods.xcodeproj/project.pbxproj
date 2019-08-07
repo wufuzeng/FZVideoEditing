@@ -7,48 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		067F0CA5FE2998CCC7020227F186CA30 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B259545E245B2548B3D11FC0488C7CA6 /* AVFoundation.framework */; };
-		0C996D63F6047DFFABBE2357153B78DB /* FZVideoClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CDE860319EB540D2EDC9E3388CAA049 /* FZVideoClipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CBAD2BB43FED02FA97145D26F2CB27A /* FZVideoPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2127901965D0AC21A6E3C0AEEFFFA3B8 /* FZVideoPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01AB8DA541CD367AB65AD1CCF26AB959 /* FZAssetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9448A17C7D26F9752EFFF743ACBFD974 /* FZAssetManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0576AEBE1201BEA54FB68A8978799576 /* FZVideoPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = BE7EA255CD87B12121A3E079FDAF4B4D /* FZVideoPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08150AB72B985AB46FD0F73D2B620BE1 /* FZAVAddMusicCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 50966B7E2B65CC21D479D4F4B7D73C17 /* FZAVAddMusicCommand.m */; };
+		0CF79BA3BF373F996B9CAC5656C7E7FA /* FZAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7968EFF3B1BCB7771D33493B49C3D50E /* FZAssetManager.m */; };
+		18F9ECAA88647E6BDD64A4ABD7472CAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A29ACAE8CCAAD49BAEF51A40903289D /* Foundation.framework */; };
+		1922192BDCF7935FC0C99BAE25BF4FF6 /* FZVideoEditingBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315EC6A51753DD2FF8B580903543DCD /* FZVideoEditingBundle.m */; };
+		1EA99FDD2A443FE67AC76F4F8F53A3E2 /* FZVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 326456B9D11008EEEDC88C56C5DBAB55 /* FZVideoPlayerView.m */; };
+		2005DECF6A83113203F62B6843FA53E1 /* FZAVCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 311517129FFB0014B19893A268F67C0F /* FZAVCommand.m */; };
+		246B93368F163FF2B945E1888F7EAFC9 /* FZAVAddWatermarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F954EE1BBDC848E2E25547B0929B647B /* FZAVAddWatermarkCommand.m */; };
 		28490F704F41A4D3E7AB626DCE395266 /* Pods-FZVideoEditing_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A1C8719C13BBA4FEEAE0D6C9CF8B32 /* Pods-FZVideoEditing_Tests-dummy.m */; };
-		2C24E5AF06E9A205304FD072F2F3B9FE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7D84922C890CB5C540A1B52CA2BC1D /* QuartzCore.framework */; };
-		2F4FC8D6CBA1954874896B7A74E31B8B /* FZAVCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 6323CD4488E05C9682ABD9978E899A80 /* FZAVCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C8FC9D8A015BA39BAFF1EB957457179 /* FZAVAddMusicCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A555D4B12114E51D8C4A2E387B7335C /* FZAVAddMusicCommand.m */; };
+		3A4244272507F66CFF28519E3E3F9A84 /* FZVideoClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = F2D4728C35DAB273ED36BD3B3744C460 /* FZVideoClipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A9F3B55B9A96A80FA29A68B36504997 /* FZAVExportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC42A7CCCD8BDF1910DDC3AA39CA46D /* FZAVExportCommand.m */; };
 		3CC7E04D5A4B697178AF9DF990F53A33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A29ACAE8CCAAD49BAEF51A40903289D /* Foundation.framework */; };
-		3DA10ECABBD83C6059E3706A14311A89 /* FZMediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3855307322023DE18D7A6BB4520285 /* FZMediaInfo.m */; };
-		3F06ADA9C600DF8658C8E59D9DD2687C /* FZVideoEditing.h in Headers */ = {isa = PBXBuildFile; fileRef = F07F0FB2B2408807AAA0AE1970FBC314 /* FZVideoEditing.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F77F2AF9DC2AAE9C1CFAA0E1BAE62D0 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65DE2A32B49DC363474FDC6D7291B38 /* MediaPlayer.framework */; };
-		41333A78689AD11A38FCFC73BE3ACCA9 /* FZVideoEditingBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 61702C7E8B2410BF6A5178A3797671F8 /* FZVideoEditingBundle.m */; };
-		4F2E89461B6BA4931C6B49B77C2EC805 /* FZVideoEditingBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F7996B43915C92E1DCC26F5A9476215 /* FZVideoEditingBundle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5277B738D5955C0CF0E09DB5685B12FB /* FZAVAddMusicCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 90C34B7A22B95B86C58C6312C1A40127 /* FZAVAddMusicCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5EA5C47B2F894D7DEF5807DD74B9C2AA /* FZAVExtractAudioCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = E93DCE413C3C057734EE5C222CB06103 /* FZAVExtractAudioCommand.m */; };
-		62CACBBF25A9FBAAB5046800CE0493F5 /* FZVideoEditing-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B66DA3DDC7A94984EF213A445AAB9B7 /* FZVideoEditing-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		68D7B2EE533C2806F970992E97071B28 /* FZAVExtractAudioCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 50E9F4D204262E39FD9D5696A1B96996 /* FZAVExtractAudioCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6B6CF083E69E246D26E3508D425E2822 /* drag.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C989537A8BB04FFD1F8EAF5E8D79238 /* drag.png */; };
-		6BD7029FDA279F46D98978798B65058E /* FZMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B3B568ACF6421A57ED8C6ABD7902F507 /* FZMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FC2C5734C53223B2A042A136D2CE6CE /* FZVideoEditing-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1188078D3FCE24314DF3ACB52DEB64AC /* FZVideoEditing-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4934CD7DD0645333D9C14E8AF8863E27 /* FZVideoEditingBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 32F0204C753BBC6A33CC4D11B28C8618 /* FZVideoEditingBundle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E55C3A03555946A2B4596CB1E2546CB /* FZVideoEditing.h in Headers */ = {isa = PBXBuildFile; fileRef = AB2BB887F08963BEA98708069160F801 /* FZVideoEditing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5808240AA2980D5A68D3ADD739911A68 /* FZMediaInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 77A10E7765578397C03F3CC75B4126F1 /* FZMediaInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58BE5403299917FC6A8C2C8A2086ACD0 /* FZVideoEditing-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C44D4F630ABB2EDB1350EF19CABCA1F /* FZVideoEditing-dummy.m */; };
+		67154C8074549CE3640B85232463CC6C /* FZAVCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = E4CCB5076170DF55DDEFFE65563892E3 /* FZAVCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CE76D423242E5C1D2D2E770CF0799FE /* Pods-FZVideoEditing_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F36F69DD065B270D4D611CAA7A4D2F48 /* Pods-FZVideoEditing_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DB3D06406B572EDB15632288AD10AF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270B1149DEEEDB3B286340808A6EA877 /* UIKit.framework */; };
 		6EFCC2E2BB5035F34847EEEF5D3D7DF9 /* Pods-FZVideoEditing_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89142AC18590455F95B8BD02AC180CFE /* Pods-FZVideoEditing_Example-dummy.m */; };
-		7480EB4C7B41104E9A83FA0172F52294 /* FZAVAddWatermarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA55CED3904BA41C3F376BEC0C8B1C0 /* FZAVAddWatermarkCommand.m */; };
-		791B1EF84861834F99DBAE370BFB5971 /* FZAVExportCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = ABDD0E515DF16C826DB6741177721DB2 /* FZAVExportCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7AD302D596D38C191921D9DF96688F77 /* FZAVCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0064717B55872041A15082F4E0B9B9 /* FZAVCommand.m */; };
-		7D781265BFF31AEEA4982ABBCD613A45 /* FZAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FC049CA2B6BFC8C4498C88925DA40 /* FZAssetManager.m */; };
-		9473B7F04096B2448CB3C894E9B47250 /* FZVideoEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 294EF5496D483E21464F3469D8B5781A /* FZVideoEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7FCD32030C91D8C2F8D6ADD1C5F0EE4B /* FZAVAddMusicCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 247BD9CA51D7DCFB44894F50085FCC18 /* FZAVAddMusicCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		882612676B5AE85B0E8332441B093E66 /* FZVideoEditing.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C286CAFD1ED6EB4B3F42E16C2F76B4D4 /* FZVideoEditing.bundle */; };
+		8901CC347C6F2915216A811C08F15209 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7D84922C890CB5C540A1B52CA2BC1D /* QuartzCore.framework */; };
+		8C6A1EC971D510D64E12C6BDF75EC8FB /* FZVideoDisplayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3103543BF99BCC9F560C5930BBF162BA /* FZVideoDisplayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D54CFA66F191FB7F1B9B07B0D1DA11D /* FZVideoClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D5FE9BA8B1EE5DA7A59F971F5B41AC /* FZVideoClipView.m */; };
+		961B47B4A6BD38D7EC25ECEEA06B66E9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B259545E245B2548B3D11FC0488C7CA6 /* AVFoundation.framework */; };
 		986D88ED15EA35995108FC659901703F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A29ACAE8CCAAD49BAEF51A40903289D /* Foundation.framework */; };
 		9C9FC09A13AB1C1ED07FBE94B7C893C4 /* Pods-FZVideoEditing_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F35A42D6882FDF62447C50AF5EEB656D /* Pods-FZVideoEditing_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A19BF3D82DC7A0D037F46E48C6EA999C /* FZAVExportCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = EB20E66AC42185E48088AC3F722C136F /* FZAVExportCommand.m */; };
-		A4B24B51B8D976A4FF4B497382D0E6A7 /* FZVideoClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = B56CC299893754F5A1586AF81403CE09 /* FZVideoClipView.m */; };
-		AA5296ACD03BA1A5A181C5970E1AD35A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270B1149DEEEDB3B286340808A6EA877 /* UIKit.framework */; };
-		AFFDF30DC32E80E659E81E669FB3E7DE /* FZAVAddWatermarkCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 68D2F63D2375464A7DE0AD3D1411B14F /* FZAVAddWatermarkCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6057B4409D09F399FED4C223FCD4627 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A29ACAE8CCAAD49BAEF51A40903289D /* Foundation.framework */; };
-		B6E1D4477D6BBADEB97DD021EC10F1F0 /* FZVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A0C8B84993315B3CFACF6489391779 /* FZVideoEditor.m */; };
-		C0D2891EF532A7C1F358D394A51F66C4 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B27A811577F0D39A0EE9521D9E7BB /* AssetsLibrary.framework */; };
-		C8E338F2682AA0B4887B0A9D240D652C /* FZVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F14EC84683973A7ED25CDD2E7623C7 /* FZVideoPlayerView.m */; };
-		DCCDD106AB55D32BABE1E81322712238 /* FZVideoEditing.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C286CAFD1ED6EB4B3F42E16C2F76B4D4 /* FZVideoEditing.bundle */; };
-		E211648E7D3240773E23699BCB66FFB6 /* FZAssetManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B20543DF8819B7DD8E465F7C7A08A77C /* FZAssetManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FBEB4D3582C43F1FBEA9D760AAAF2905 /* FZVideoEditing-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 636480C0956F5253AACC6BF37E40F342 /* FZVideoEditing-dummy.m */; };
+		A37971B8ABAE37646067B13ABD902EFB /* FZAVAddWatermarkCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E4BA62303D04A01F2FDA9E16EB88059 /* FZAVAddWatermarkCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A79F58E3EC121CCE57EB414E20220A37 /* FZMediaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 918629ECF5B06CC20A581960E6097117 /* FZMediaInfo.m */; };
+		ABC75B5860992320BC6839E1D0E72ADF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65DE2A32B49DC363474FDC6D7291B38 /* MediaPlayer.framework */; };
+		AC1C62FD99E48259992E647BD47289C3 /* FZVideoEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 719CA512BEF1A1F6A21E37539C7823A8 /* FZVideoEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B091554E1477343F856F28262988C2A5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B27A811577F0D39A0EE9521D9E7BB /* AssetsLibrary.framework */; };
+		B5D6A70963C4D9C92D1B640955C4E5A5 /* FZAVExtractAudioCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = E785A44F30658486134D44E5DC6FA0CB /* FZAVExtractAudioCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDB0CC8910E69069079713A5246C2601 /* FZVideoDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC88DBD293CB8D0007CE5A5A654E213D /* FZVideoDisplayView.m */; };
+		D3FA6C33B76E8010E735576023DEDFA8 /* FZAVExtractAudioCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = CDACBB082B6C8FF79A93D3B5F1A96498 /* FZAVExtractAudioCommand.m */; };
+		D6236D817A3FDC9DE6AFFE93309592A6 /* FZVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 724355A03B00CCFD41A57767C4AE75DD /* FZVideoEditor.m */; };
+		DE8DDF6BA996F67D48899DFD06D87D1E /* drag.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F554756F34FB19E0580AFAADD81ECA5 /* drag.png */; };
+		F962400FB2510659434652793D2B34A1 /* FZAVExportCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 46F85D4E0D9613E9F456DE5ADBD1444F /* FZAVExportCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0ACCD3189BCD6AA88DDEBEEE6147AF1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFE0BD1C46B480650321D19FA5E60D42;
+			remoteInfo = "FZVideoEditing-FZVideoEditing";
+		};
 		2BF9EA83B8A10FFB5E8A98953CFDA538 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -63,77 +72,72 @@
 			remoteGlobalIDString = 363D1D19734B3D3ED8C5B757926EE1A9;
 			remoteInfo = "Pods-FZVideoEditing_Example";
 		};
-		97509D36475E105CCC2566A05C0ADB29 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AFE0BD1C46B480650321D19FA5E60D42;
-			remoteInfo = "FZVideoEditing-FZVideoEditing";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02D5FE9BA8B1EE5DA7A59F971F5B41AC /* FZVideoClipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoClipView.m; sourceTree = "<group>"; };
 		091CEC341750ABD634C9F410DFAC32DA /* Pods-FZVideoEditing_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZVideoEditing_Example-Info.plist"; sourceTree = "<group>"; };
-		0B66DA3DDC7A94984EF213A445AAB9B7 /* FZVideoEditing-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZVideoEditing-umbrella.h"; sourceTree = "<group>"; };
 		10CBD2EC7D25A7B58EE95C0FE7DC87EF /* Pods-FZVideoEditing_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FZVideoEditing_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1188078D3FCE24314DF3ACB52DEB64AC /* FZVideoEditing-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZVideoEditing-umbrella.h"; sourceTree = "<group>"; };
 		13448B9EF4B360959515E58D2719D27C /* Pods_FZVideoEditing_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZVideoEditing_Tests.framework; path = "Pods-FZVideoEditing_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		175E210AABB4C48C8457312576D3215B /* Pods-FZVideoEditing_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZVideoEditing_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		2127901965D0AC21A6E3C0AEEFFFA3B8 /* FZVideoPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoPlayerView.h; sourceTree = "<group>"; };
+		247BD9CA51D7DCFB44894F50085FCC18 /* FZAVAddMusicCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVAddMusicCommand.h; sourceTree = "<group>"; };
 		252787401B0780BDE958D4859E575127 /* Pods_FZVideoEditing_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FZVideoEditing_Example.framework; path = "Pods-FZVideoEditing_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		270B1149DEEEDB3B286340808A6EA877 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		294EF5496D483E21464F3469D8B5781A /* FZVideoEditor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoEditor.h; sourceTree = "<group>"; };
-		309EE291CFA036BE3D7E15ACD1A01D37 /* FZVideoEditing-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FZVideoEditing-Info.plist"; sourceTree = "<group>"; };
-		316666FE1EF1C428F87CB1CA1F11660F /* FZVideoEditing-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZVideoEditing-prefix.pch"; sourceTree = "<group>"; };
+		2C44D4F630ABB2EDB1350EF19CABCA1F /* FZVideoEditing-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZVideoEditing-dummy.m"; sourceTree = "<group>"; };
+		3103543BF99BCC9F560C5930BBF162BA /* FZVideoDisplayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoDisplayView.h; sourceTree = "<group>"; };
+		311517129FFB0014B19893A268F67C0F /* FZAVCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVCommand.m; sourceTree = "<group>"; };
+		326456B9D11008EEEDC88C56C5DBAB55 /* FZVideoPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoPlayerView.m; sourceTree = "<group>"; };
+		32F0204C753BBC6A33CC4D11B28C8618 /* FZVideoEditingBundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoEditingBundle.h; sourceTree = "<group>"; };
 		3398BB892DED1FA79037D4382E41EE9A /* Pods-FZVideoEditing_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZVideoEditing_Tests-Info.plist"; sourceTree = "<group>"; };
-		3CDE860319EB540D2EDC9E3388CAA049 /* FZVideoClipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoClipView.h; sourceTree = "<group>"; };
-		3EA55CED3904BA41C3F376BEC0C8B1C0 /* FZAVAddWatermarkCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVAddWatermarkCommand.m; sourceTree = "<group>"; };
+		34180E3A8E0E54C904E61554A102E82A /* FZVideoEditing-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FZVideoEditing-Info.plist"; sourceTree = "<group>"; };
 		41024658C146297BBBE9F4896A8053A7 /* FZVideoEditing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FZVideoEditing.framework; path = FZVideoEditing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A555D4B12114E51D8C4A2E387B7335C /* FZAVAddMusicCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVAddMusicCommand.m; sourceTree = "<group>"; };
-		50E9F4D204262E39FD9D5696A1B96996 /* FZAVExtractAudioCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVExtractAudioCommand.h; sourceTree = "<group>"; };
-		5151A1BEA8A18BA632DF262042C2E651 /* FZVideoEditing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FZVideoEditing.modulemap; sourceTree = "<group>"; };
-		61702C7E8B2410BF6A5178A3797671F8 /* FZVideoEditingBundle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoEditingBundle.m; sourceTree = "<group>"; };
-		6323CD4488E05C9682ABD9978E899A80 /* FZAVCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVCommand.h; sourceTree = "<group>"; };
-		636480C0956F5253AACC6BF37E40F342 /* FZVideoEditing-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FZVideoEditing-dummy.m"; sourceTree = "<group>"; };
+		46F85D4E0D9613E9F456DE5ADBD1444F /* FZAVExportCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVExportCommand.h; sourceTree = "<group>"; };
+		4AC42A7CCCD8BDF1910DDC3AA39CA46D /* FZAVExportCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVExportCommand.m; sourceTree = "<group>"; };
+		4E4BA62303D04A01F2FDA9E16EB88059 /* FZAVAddWatermarkCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVAddWatermarkCommand.h; sourceTree = "<group>"; };
+		50966B7E2B65CC21D479D4F4B7D73C17 /* FZAVAddMusicCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVAddMusicCommand.m; sourceTree = "<group>"; };
+		5315EC6A51753DD2FF8B580903543DCD /* FZVideoEditingBundle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoEditingBundle.m; sourceTree = "<group>"; };
 		68A1C8719C13BBA4FEEAE0D6C9CF8B32 /* Pods-FZVideoEditing_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FZVideoEditing_Tests-dummy.m"; sourceTree = "<group>"; };
-		68D2F63D2375464A7DE0AD3D1411B14F /* FZAVAddWatermarkCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVAddWatermarkCommand.h; sourceTree = "<group>"; };
 		6A29ACAE8CCAAD49BAEF51A40903289D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6C0064717B55872041A15082F4E0B9B9 /* FZAVCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVCommand.m; sourceTree = "<group>"; };
-		6CBCB9F06236EB1E831195C3B05C7D42 /* ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist"; sourceTree = "<group>"; };
-		6F7996B43915C92E1DCC26F5A9476215 /* FZVideoEditingBundle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoEditingBundle.h; sourceTree = "<group>"; };
+		6F554756F34FB19E0580AFAADD81ECA5 /* drag.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = drag.png; path = FZVideoEditing/Assets/drag.png; sourceTree = "<group>"; };
 		719C777A5FF51FD152B937E63773D17C /* Pods-FZVideoEditing_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FZVideoEditing_Tests.modulemap"; sourceTree = "<group>"; };
-		7A0FC049CA2B6BFC8C4498C88925DA40 /* FZAssetManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAssetManager.m; sourceTree = "<group>"; };
+		719CA512BEF1A1F6A21E37539C7823A8 /* FZVideoEditor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoEditor.h; sourceTree = "<group>"; };
+		724355A03B00CCFD41A57767C4AE75DD /* FZVideoEditor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoEditor.m; sourceTree = "<group>"; };
+		76A824F66A074823209DA31429AF47AB /* FZVideoEditing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FZVideoEditing.xcconfig; sourceTree = "<group>"; };
+		77A10E7765578397C03F3CC75B4126F1 /* FZMediaInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZMediaInfo.h; sourceTree = "<group>"; };
+		7968EFF3B1BCB7771D33493B49C3D50E /* FZAssetManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAssetManager.m; sourceTree = "<group>"; };
+		882666E721CA932A55A211143C8EA223 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		89142AC18590455F95B8BD02AC180CFE /* Pods-FZVideoEditing_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FZVideoEditing_Example-dummy.m"; sourceTree = "<group>"; };
-		8C989537A8BB04FFD1F8EAF5E8D79238 /* drag.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = drag.png; path = FZVideoEditing/Assets/drag.png; sourceTree = "<group>"; };
 		8D3767D89098F6A85F497D4DC602DEA9 /* Pods-FZVideoEditing_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZVideoEditing_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		90C34B7A22B95B86C58C6312C1A40127 /* FZAVAddMusicCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVAddMusicCommand.h; sourceTree = "<group>"; };
-		96A0C8B84993315B3CFACF6489391779 /* FZVideoEditor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoEditor.m; sourceTree = "<group>"; };
+		918629ECF5B06CC20A581960E6097117 /* FZMediaInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZMediaInfo.m; sourceTree = "<group>"; };
+		9448A17C7D26F9752EFFF743ACBFD974 /* FZAssetManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAssetManager.h; sourceTree = "<group>"; };
 		9935170D5D500DB2C0BDF0C2A94672CE /* Pods-FZVideoEditing_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FZVideoEditing_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9A7D84922C890CB5C540A1B52CA2BC1D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AA1D4222CEE2CFDB4D00CBCB1033DFF7 /* Pods-FZVideoEditing_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZVideoEditing_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		ABDD0E515DF16C826DB6741177721DB2 /* FZAVExportCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVExportCommand.h; sourceTree = "<group>"; };
+		AB2BB887F08963BEA98708069160F801 /* FZVideoEditing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FZVideoEditing.h; path = FZVideoEditing/Classes/FZVideoEditing.h; sourceTree = "<group>"; };
+		AC88DBD293CB8D0007CE5A5A654E213D /* FZVideoDisplayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoDisplayView.m; sourceTree = "<group>"; };
 		AD8EC136CAB0FDA7E1C80F81A9783C9A /* Pods-FZVideoEditing_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZVideoEditing_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		AE9572304FC8BB1A4D90218324DF96F6 /* FZVideoEditing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FZVideoEditing.xcconfig; sourceTree = "<group>"; };
-		B20543DF8819B7DD8E465F7C7A08A77C /* FZAssetManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAssetManager.h; sourceTree = "<group>"; };
+		B0B434CA409B26BABACFDEA4764A7175 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		B259545E245B2548B3D11FC0488C7CA6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		B26AF086C2CD77A9DD5B0E88F842CFDC /* FZVideoEditing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FZVideoEditing.modulemap; sourceTree = "<group>"; };
 		B3A4B0941B7894B4A8BD81D16CFD2D95 /* Pods-FZVideoEditing_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FZVideoEditing_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B3B568ACF6421A57ED8C6ABD7902F507 /* FZMediaInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZMediaInfo.h; sourceTree = "<group>"; };
-		B56CC299893754F5A1586AF81403CE09 /* FZVideoClipView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoClipView.m; sourceTree = "<group>"; };
 		B6C8908B68EE5537B110760623AC45F8 /* Pods-FZVideoEditing_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FZVideoEditing_Example.modulemap"; sourceTree = "<group>"; };
+		B810E81FAB2E2444349FA72CABDEDB04 /* FZVideoEditing.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FZVideoEditing.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE7EA255CD87B12121A3E079FDAF4B4D /* FZVideoPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoPlayerView.h; sourceTree = "<group>"; };
 		C286CAFD1ED6EB4B3F42E16C2F76B4D4 /* FZVideoEditing.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FZVideoEditing.bundle; path = "FZVideoEditing-FZVideoEditing.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65DE2A32B49DC363474FDC6D7291B38 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		C82B27A811577F0D39A0EE9521D9E7BB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
-		C9D6A6B6A21AF7F2BCD24E298B420364 /* FZVideoEditing.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FZVideoEditing.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		CCAF803B7CE2A7A5DC4238115BDD9F0F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		D3F3490B4D3C6F7CC99A588DF62E2383 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		D7F14EC84683973A7ED25CDD2E7623C7 /* FZVideoPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZVideoPlayerView.m; sourceTree = "<group>"; };
-		DB3855307322023DE18D7A6BB4520285 /* FZMediaInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZMediaInfo.m; sourceTree = "<group>"; };
+		C9D3D76A6E46FC42AFA0377DFC8462A2 /* ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist"; sourceTree = "<group>"; };
+		CDACBB082B6C8FF79A93D3B5F1A96498 /* FZAVExtractAudioCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVExtractAudioCommand.m; sourceTree = "<group>"; };
 		DD4E0D2EA716B24BBE7E9CA86B77E9FF /* Pods-FZVideoEditing_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZVideoEditing_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E93DCE413C3C057734EE5C222CB06103 /* FZAVExtractAudioCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVExtractAudioCommand.m; sourceTree = "<group>"; };
-		EB20E66AC42185E48088AC3F722C136F /* FZAVExportCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVExportCommand.m; sourceTree = "<group>"; };
-		F07F0FB2B2408807AAA0AE1970FBC314 /* FZVideoEditing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FZVideoEditing.h; path = FZVideoEditing/Classes/FZVideoEditing.h; sourceTree = "<group>"; };
+		E4CCB5076170DF55DDEFFE65563892E3 /* FZAVCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVCommand.h; sourceTree = "<group>"; };
+		E785A44F30658486134D44E5DC6FA0CB /* FZAVExtractAudioCommand.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZAVExtractAudioCommand.h; sourceTree = "<group>"; };
+		F2D4728C35DAB273ED36BD3B3744C460 /* FZVideoClipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FZVideoClipView.h; sourceTree = "<group>"; };
 		F35A42D6882FDF62447C50AF5EEB656D /* Pods-FZVideoEditing_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FZVideoEditing_Tests-umbrella.h"; sourceTree = "<group>"; };
 		F36F69DD065B270D4D611CAA7A4D2F48 /* Pods-FZVideoEditing_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FZVideoEditing_Example-umbrella.h"; sourceTree = "<group>"; };
+		F954EE1BBDC848E2E25547B0929B647B /* FZAVAddWatermarkCommand.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FZAVAddWatermarkCommand.m; sourceTree = "<group>"; };
+		FB0B6896F3331E135A82FA0C91158765 /* FZVideoEditing-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FZVideoEditing-prefix.pch"; sourceTree = "<group>"; };
 		FB8B6DAF16251E726764DFAF3DEEA8EC /* Pods-FZVideoEditing_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FZVideoEditing_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,7 +150,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		715241F48956355C03ABEF1FD94040DA /* Frameworks */ = {
+		CA3EFB528D01AC11A412C3B5D2E27925 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -161,63 +165,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD33358B116CE7A307B5DB69624D7EFE /* Frameworks */ = {
+		E14DB261B73A443696E01726CE0F9777 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0D2891EF532A7C1F358D394A51F66C4 /* AssetsLibrary.framework in Frameworks */,
-				067F0CA5FE2998CCC7020227F186CA30 /* AVFoundation.framework in Frameworks */,
-				B6057B4409D09F399FED4C223FCD4627 /* Foundation.framework in Frameworks */,
-				3F77F2AF9DC2AAE9C1CFAA0E1BAE62D0 /* MediaPlayer.framework in Frameworks */,
-				2C24E5AF06E9A205304FD072F2F3B9FE /* QuartzCore.framework in Frameworks */,
-				AA5296ACD03BA1A5A181C5970E1AD35A /* UIKit.framework in Frameworks */,
+				B091554E1477343F856F28262988C2A5 /* AssetsLibrary.framework in Frameworks */,
+				961B47B4A6BD38D7EC25ECEEA06B66E9 /* AVFoundation.framework in Frameworks */,
+				18F9ECAA88647E6BDD64A4ABD7472CAB /* Foundation.framework in Frameworks */,
+				ABC75B5860992320BC6839E1D0E72ADF /* MediaPlayer.framework in Frameworks */,
+				8901CC347C6F2915216A811C08F15209 /* QuartzCore.framework in Frameworks */,
+				6DB3D06406B572EDB15632288AD10AF7 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0BBCC3DA579FAE9EEE507F2CC0955FB4 /* VideoEditor */ = {
+		010469C64911073A010A213F825ABB63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B20543DF8819B7DD8E465F7C7A08A77C /* FZAssetManager.h */,
-				7A0FC049CA2B6BFC8C4498C88925DA40 /* FZAssetManager.m */,
-				B3B568ACF6421A57ED8C6ABD7902F507 /* FZMediaInfo.h */,
-				DB3855307322023DE18D7A6BB4520285 /* FZMediaInfo.m */,
-				3CDE860319EB540D2EDC9E3388CAA049 /* FZVideoClipView.h */,
-				B56CC299893754F5A1586AF81403CE09 /* FZVideoClipView.m */,
-				6F7996B43915C92E1DCC26F5A9476215 /* FZVideoEditingBundle.h */,
-				61702C7E8B2410BF6A5178A3797671F8 /* FZVideoEditingBundle.m */,
-				294EF5496D483E21464F3469D8B5781A /* FZVideoEditor.h */,
-				96A0C8B84993315B3CFACF6489391779 /* FZVideoEditor.m */,
+				6F554756F34FB19E0580AFAADD81ECA5 /* drag.png */,
 			);
-			name = VideoEditor;
-			path = FZVideoEditing/Classes/VideoEditor;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		32E0A8D956022C2DA9BB166D775771D5 /* FZVideoEditing */ = {
+		46E3E221A17CCAE2DF3A9BD6A8C2996E /* FZVideoEditing */ = {
 			isa = PBXGroup;
 			children = (
-				F07F0FB2B2408807AAA0AE1970FBC314 /* FZVideoEditing.h */,
-				E3E2865DB4BF20E2A2E63E8369113A23 /* Command */,
-				4FC6AA86EFAF006B8EBD02484A3E4157 /* PlayerView */,
-				405A513D6A1EC477951503B770B53FF7 /* Pod */,
-				959A90E2A9B827577E5E51069C14AC89 /* Resources */,
-				EF4CD9C4B8ABD9BA502863996479B4D5 /* Support Files */,
-				0BBCC3DA579FAE9EEE507F2CC0955FB4 /* VideoEditor */,
+				AB2BB887F08963BEA98708069160F801 /* FZVideoEditing.h */,
+				6DDEDD1D18AD5B3C86C08AB0BAD9C5AC /* Command */,
+				7EEB82FF62451A56DAF17C9508D71AD6 /* PlayerView */,
+				F6EC333810274FB1E92DF91D071C5DAD /* Pod */,
+				010469C64911073A010A213F825ABB63 /* Resources */,
+				AAC952F11267E004CBFDBEDABDC76D44 /* Support Files */,
+				BF92C856B04A95E97D4ADF8FDDCE4660 /* VideoEditor */,
 			);
 			name = FZVideoEditing;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		405A513D6A1EC477951503B770B53FF7 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				C9D6A6B6A21AF7F2BCD24E298B420364 /* FZVideoEditing.podspec */,
-				D3F3490B4D3C6F7CC99A588DF62E2383 /* LICENSE */,
-				CCAF803B7CE2A7A5DC4238115BDD9F0F /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		4924231D56BE1176DC5F178774320C18 /* iOS */ = {
@@ -233,11 +217,31 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		4FC6AA86EFAF006B8EBD02484A3E4157 /* PlayerView */ = {
+		6DDEDD1D18AD5B3C86C08AB0BAD9C5AC /* Command */ = {
 			isa = PBXGroup;
 			children = (
-				2127901965D0AC21A6E3C0AEEFFFA3B8 /* FZVideoPlayerView.h */,
-				D7F14EC84683973A7ED25CDD2E7623C7 /* FZVideoPlayerView.m */,
+				247BD9CA51D7DCFB44894F50085FCC18 /* FZAVAddMusicCommand.h */,
+				50966B7E2B65CC21D479D4F4B7D73C17 /* FZAVAddMusicCommand.m */,
+				4E4BA62303D04A01F2FDA9E16EB88059 /* FZAVAddWatermarkCommand.h */,
+				F954EE1BBDC848E2E25547B0929B647B /* FZAVAddWatermarkCommand.m */,
+				E4CCB5076170DF55DDEFFE65563892E3 /* FZAVCommand.h */,
+				311517129FFB0014B19893A268F67C0F /* FZAVCommand.m */,
+				46F85D4E0D9613E9F456DE5ADBD1444F /* FZAVExportCommand.h */,
+				4AC42A7CCCD8BDF1910DDC3AA39CA46D /* FZAVExportCommand.m */,
+				E785A44F30658486134D44E5DC6FA0CB /* FZAVExtractAudioCommand.h */,
+				CDACBB082B6C8FF79A93D3B5F1A96498 /* FZAVExtractAudioCommand.m */,
+			);
+			name = Command;
+			path = FZVideoEditing/Classes/Command;
+			sourceTree = "<group>";
+		};
+		7EEB82FF62451A56DAF17C9508D71AD6 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				3103543BF99BCC9F560C5930BBF162BA /* FZVideoDisplayView.h */,
+				AC88DBD293CB8D0007CE5A5A654E213D /* FZVideoDisplayView.m */,
+				BE7EA255CD87B12121A3E079FDAF4B4D /* FZVideoPlayerView.h */,
+				326456B9D11008EEEDC88C56C5DBAB55 /* FZVideoPlayerView.m */,
 			);
 			name = PlayerView;
 			path = FZVideoEditing/Classes/PlayerView;
@@ -257,14 +261,6 @@
 			);
 			name = "Pods-FZVideoEditing_Tests";
 			path = "Target Support Files/Pods-FZVideoEditing_Tests";
-			sourceTree = "<group>";
-		};
-		959A90E2A9B827577E5E51069C14AC89 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8C989537A8BB04FFD1F8EAF5E8D79238 /* drag.png */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		9AEBF0D841FD453D3FEABA43C14B0698 /* Pods-FZVideoEditing_Example */ = {
@@ -291,6 +287,39 @@
 				86770AC0C8CF85E0C34E23642432569A /* Pods-FZVideoEditing_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		AAC952F11267E004CBFDBEDABDC76D44 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B26AF086C2CD77A9DD5B0E88F842CFDC /* FZVideoEditing.modulemap */,
+				76A824F66A074823209DA31429AF47AB /* FZVideoEditing.xcconfig */,
+				2C44D4F630ABB2EDB1350EF19CABCA1F /* FZVideoEditing-dummy.m */,
+				34180E3A8E0E54C904E61554A102E82A /* FZVideoEditing-Info.plist */,
+				FB0B6896F3331E135A82FA0C91158765 /* FZVideoEditing-prefix.pch */,
+				1188078D3FCE24314DF3ACB52DEB64AC /* FZVideoEditing-umbrella.h */,
+				C9D3D76A6E46FC42AFA0377DFC8462A2 /* ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/FZVideoEditing";
+			sourceTree = "<group>";
+		};
+		BF92C856B04A95E97D4ADF8FDDCE4660 /* VideoEditor */ = {
+			isa = PBXGroup;
+			children = (
+				9448A17C7D26F9752EFFF743ACBFD974 /* FZAssetManager.h */,
+				7968EFF3B1BCB7771D33493B49C3D50E /* FZAssetManager.m */,
+				77A10E7765578397C03F3CC75B4126F1 /* FZMediaInfo.h */,
+				918629ECF5B06CC20A581960E6097117 /* FZMediaInfo.m */,
+				F2D4728C35DAB273ED36BD3B3744C460 /* FZVideoClipView.h */,
+				02D5FE9BA8B1EE5DA7A59F971F5B41AC /* FZVideoClipView.m */,
+				32F0204C753BBC6A33CC4D11B28C8618 /* FZVideoEditingBundle.h */,
+				5315EC6A51753DD2FF8B580903543DCD /* FZVideoEditingBundle.m */,
+				719CA512BEF1A1F6A21E37539C7823A8 /* FZVideoEditor.h */,
+				724355A03B00CCFD41A57767C4AE75DD /* FZVideoEditor.m */,
+			);
+			name = VideoEditor;
+			path = FZVideoEditing/Classes/VideoEditor;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -326,42 +355,19 @@
 		DCA41A241CC5F2D794CC905AAA99DF5F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				32E0A8D956022C2DA9BB166D775771D5 /* FZVideoEditing */,
+				46E3E221A17CCAE2DF3A9BD6A8C2996E /* FZVideoEditing */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		E3E2865DB4BF20E2A2E63E8369113A23 /* Command */ = {
+		F6EC333810274FB1E92DF91D071C5DAD /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				90C34B7A22B95B86C58C6312C1A40127 /* FZAVAddMusicCommand.h */,
-				4A555D4B12114E51D8C4A2E387B7335C /* FZAVAddMusicCommand.m */,
-				68D2F63D2375464A7DE0AD3D1411B14F /* FZAVAddWatermarkCommand.h */,
-				3EA55CED3904BA41C3F376BEC0C8B1C0 /* FZAVAddWatermarkCommand.m */,
-				6323CD4488E05C9682ABD9978E899A80 /* FZAVCommand.h */,
-				6C0064717B55872041A15082F4E0B9B9 /* FZAVCommand.m */,
-				ABDD0E515DF16C826DB6741177721DB2 /* FZAVExportCommand.h */,
-				EB20E66AC42185E48088AC3F722C136F /* FZAVExportCommand.m */,
-				50E9F4D204262E39FD9D5696A1B96996 /* FZAVExtractAudioCommand.h */,
-				E93DCE413C3C057734EE5C222CB06103 /* FZAVExtractAudioCommand.m */,
+				B810E81FAB2E2444349FA72CABDEDB04 /* FZVideoEditing.podspec */,
+				882666E721CA932A55A211143C8EA223 /* LICENSE */,
+				B0B434CA409B26BABACFDEA4764A7175 /* README.md */,
 			);
-			name = Command;
-			path = FZVideoEditing/Classes/Command;
-			sourceTree = "<group>";
-		};
-		EF4CD9C4B8ABD9BA502863996479B4D5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5151A1BEA8A18BA632DF262042C2E651 /* FZVideoEditing.modulemap */,
-				AE9572304FC8BB1A4D90218324DF96F6 /* FZVideoEditing.xcconfig */,
-				636480C0956F5253AACC6BF37E40F342 /* FZVideoEditing-dummy.m */,
-				309EE291CFA036BE3D7E15ACD1A01D37 /* FZVideoEditing-Info.plist */,
-				316666FE1EF1C428F87CB1CA1F11660F /* FZVideoEditing-prefix.pch */,
-				0B66DA3DDC7A94984EF213A445AAB9B7 /* FZVideoEditing-umbrella.h */,
-				6CBCB9F06236EB1E831195C3B05C7D42 /* ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/FZVideoEditing";
+			name = Pod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,23 +381,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94B05BEBEEA5CCDBA674603BF17D5634 /* Headers */ = {
+		A57733CA5387A8851C162E09E56E1839 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E211648E7D3240773E23699BCB66FFB6 /* FZAssetManager.h in Headers */,
-				5277B738D5955C0CF0E09DB5685B12FB /* FZAVAddMusicCommand.h in Headers */,
-				AFFDF30DC32E80E659E81E669FB3E7DE /* FZAVAddWatermarkCommand.h in Headers */,
-				2F4FC8D6CBA1954874896B7A74E31B8B /* FZAVCommand.h in Headers */,
-				791B1EF84861834F99DBAE370BFB5971 /* FZAVExportCommand.h in Headers */,
-				68D7B2EE533C2806F970992E97071B28 /* FZAVExtractAudioCommand.h in Headers */,
-				6BD7029FDA279F46D98978798B65058E /* FZMediaInfo.h in Headers */,
-				0C996D63F6047DFFABBE2357153B78DB /* FZVideoClipView.h in Headers */,
-				62CACBBF25A9FBAAB5046800CE0493F5 /* FZVideoEditing-umbrella.h in Headers */,
-				3F06ADA9C600DF8658C8E59D9DD2687C /* FZVideoEditing.h in Headers */,
-				4F2E89461B6BA4931C6B49B77C2EC805 /* FZVideoEditingBundle.h in Headers */,
-				9473B7F04096B2448CB3C894E9B47250 /* FZVideoEditor.h in Headers */,
-				1CBAD2BB43FED02FA97145D26F2CB27A /* FZVideoPlayerView.h in Headers */,
+				01AB8DA541CD367AB65AD1CCF26AB959 /* FZAssetManager.h in Headers */,
+				7FCD32030C91D8C2F8D6ADD1C5F0EE4B /* FZAVAddMusicCommand.h in Headers */,
+				A37971B8ABAE37646067B13ABD902EFB /* FZAVAddWatermarkCommand.h in Headers */,
+				67154C8074549CE3640B85232463CC6C /* FZAVCommand.h in Headers */,
+				F962400FB2510659434652793D2B34A1 /* FZAVExportCommand.h in Headers */,
+				B5D6A70963C4D9C92D1B640955C4E5A5 /* FZAVExtractAudioCommand.h in Headers */,
+				5808240AA2980D5A68D3ADD739911A68 /* FZMediaInfo.h in Headers */,
+				3A4244272507F66CFF28519E3E3F9A84 /* FZVideoClipView.h in Headers */,
+				8C6A1EC971D510D64E12C6BDF75EC8FB /* FZVideoDisplayView.h in Headers */,
+				3FC2C5734C53223B2A042A136D2CE6CE /* FZVideoEditing-umbrella.h in Headers */,
+				4E55C3A03555946A2B4596CB1E2546CB /* FZVideoEditing.h in Headers */,
+				4934CD7DD0645333D9C14E8AF8863E27 /* FZVideoEditingBundle.h in Headers */,
+				AC1C62FD99E48259992E647BD47289C3 /* FZVideoEditor.h in Headers */,
+				0576AEBE1201BEA54FB68A8978799576 /* FZVideoPlayerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,11 +434,11 @@
 		};
 		AFE0BD1C46B480650321D19FA5E60D42 /* FZVideoEditing-FZVideoEditing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3036685453D8157DF1F7E508866249B1 /* Build configuration list for PBXNativeTarget "FZVideoEditing-FZVideoEditing" */;
+			buildConfigurationList = BCE25F53B34FD56294C954C4541EE3DE /* Build configuration list for PBXNativeTarget "FZVideoEditing-FZVideoEditing" */;
 			buildPhases = (
-				B1E8DE6CCCA73889296ABB06EC544893 /* Sources */,
-				715241F48956355C03ABEF1FD94040DA /* Frameworks */,
-				A29F295AC49D94B9F9051668F14C1D0D /* Resources */,
+				C4130CAE955D599C598BCFC8D562CEAC /* Sources */,
+				CA3EFB528D01AC11A412C3B5D2E27925 /* Frameworks */,
+				E75A4E6AC3C282EC1DAC1F740134789E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -444,17 +451,17 @@
 		};
 		C86425E46FAC8A894247ECEA03C94C07 /* FZVideoEditing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B2F12FDE0550EFA6944BF1A3E56BD9B /* Build configuration list for PBXNativeTarget "FZVideoEditing" */;
+			buildConfigurationList = C5FD9145A92FE0199ACFCB06F16252AB /* Build configuration list for PBXNativeTarget "FZVideoEditing" */;
 			buildPhases = (
-				94B05BEBEEA5CCDBA674603BF17D5634 /* Headers */,
-				A4B590F696DB50081204621BE476EE4A /* Sources */,
-				FD33358B116CE7A307B5DB69624D7EFE /* Frameworks */,
-				933BBEBED9E0BFBCB54D875754A8568E /* Resources */,
+				A57733CA5387A8851C162E09E56E1839 /* Headers */,
+				8F4ACDC4D371D320D0BD804C5AD0D85D /* Sources */,
+				E14DB261B73A443696E01726CE0F9777 /* Frameworks */,
+				711200C5447B7A639D49E881C74C3845 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9E6EF89A786BDB2B8114395FBE6C03AC /* PBXTargetDependency */,
+				61E8612F71932203645271631E7BA1E6 /* PBXTargetDependency */,
 			);
 			name = FZVideoEditing;
 			productName = FZVideoEditing;
@@ -517,19 +524,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		933BBEBED9E0BFBCB54D875754A8568E /* Resources */ = {
+		711200C5447B7A639D49E881C74C3845 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCCDD106AB55D32BABE1E81322712238 /* FZVideoEditing.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A29F295AC49D94B9F9051668F14C1D0D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6B6CF083E69E246D26E3508D425E2822 /* drag.png in Resources */,
+				882612676B5AE85B0E8332441B093E66 /* FZVideoEditing.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +536,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E75A4E6AC3C282EC1DAC1F740134789E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE8DDF6BA996F67D48899DFD06D87D1E /* drag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,29 +558,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4B590F696DB50081204621BE476EE4A /* Sources */ = {
+		8F4ACDC4D371D320D0BD804C5AD0D85D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D781265BFF31AEEA4982ABBCD613A45 /* FZAssetManager.m in Sources */,
-				3C8FC9D8A015BA39BAFF1EB957457179 /* FZAVAddMusicCommand.m in Sources */,
-				7480EB4C7B41104E9A83FA0172F52294 /* FZAVAddWatermarkCommand.m in Sources */,
-				7AD302D596D38C191921D9DF96688F77 /* FZAVCommand.m in Sources */,
-				A19BF3D82DC7A0D037F46E48C6EA999C /* FZAVExportCommand.m in Sources */,
-				5EA5C47B2F894D7DEF5807DD74B9C2AA /* FZAVExtractAudioCommand.m in Sources */,
-				3DA10ECABBD83C6059E3706A14311A89 /* FZMediaInfo.m in Sources */,
-				A4B24B51B8D976A4FF4B497382D0E6A7 /* FZVideoClipView.m in Sources */,
-				FBEB4D3582C43F1FBEA9D760AAAF2905 /* FZVideoEditing-dummy.m in Sources */,
-				41333A78689AD11A38FCFC73BE3ACCA9 /* FZVideoEditingBundle.m in Sources */,
-				B6E1D4477D6BBADEB97DD021EC10F1F0 /* FZVideoEditor.m in Sources */,
-				C8E338F2682AA0B4887B0A9D240D652C /* FZVideoPlayerView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1E8DE6CCCA73889296ABB06EC544893 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				0CF79BA3BF373F996B9CAC5656C7E7FA /* FZAssetManager.m in Sources */,
+				08150AB72B985AB46FD0F73D2B620BE1 /* FZAVAddMusicCommand.m in Sources */,
+				246B93368F163FF2B945E1888F7EAFC9 /* FZAVAddWatermarkCommand.m in Sources */,
+				2005DECF6A83113203F62B6843FA53E1 /* FZAVCommand.m in Sources */,
+				3A9F3B55B9A96A80FA29A68B36504997 /* FZAVExportCommand.m in Sources */,
+				D3FA6C33B76E8010E735576023DEDFA8 /* FZAVExtractAudioCommand.m in Sources */,
+				A79F58E3EC121CCE57EB414E20220A37 /* FZMediaInfo.m in Sources */,
+				8D54CFA66F191FB7F1B9B07B0D1DA11D /* FZVideoClipView.m in Sources */,
+				CDB0CC8910E69069079713A5246C2601 /* FZVideoDisplayView.m in Sources */,
+				58BE5403299917FC6A8C2C8A2086ACD0 /* FZVideoEditing-dummy.m in Sources */,
+				1922192BDCF7935FC0C99BAE25BF4FF6 /* FZVideoEditingBundle.m in Sources */,
+				D6236D817A3FDC9DE6AFFE93309592A6 /* FZVideoEditor.m in Sources */,
+				1EA99FDD2A443FE67AC76F4F8F53A3E2 /* FZVideoPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,20 +586,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4130CAE955D599C598BCFC8D562CEAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		61E8612F71932203645271631E7BA1E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FZVideoEditing-FZVideoEditing";
+			target = AFE0BD1C46B480650321D19FA5E60D42 /* FZVideoEditing-FZVideoEditing */;
+			targetProxy = 0ACCD3189BCD6AA88DDEBEEE6147AF1F /* PBXContainerItemProxy */;
+		};
 		698F1C5FFE06F53CE8706303E9FD3A7D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-FZVideoEditing_Example";
 			target = 363D1D19734B3D3ED8C5B757926EE1A9 /* Pods-FZVideoEditing_Example */;
 			targetProxy = 821B9282003E6836DB98F0175BB030C0 /* PBXContainerItemProxy */;
-		};
-		9E6EF89A786BDB2B8114395FBE6C03AC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "FZVideoEditing-FZVideoEditing";
-			target = AFE0BD1C46B480650321D19FA5E60D42 /* FZVideoEditing-FZVideoEditing */;
-			targetProxy = 97509D36475E105CCC2566A05C0ADB29 /* PBXContainerItemProxy */;
 		};
 		FD0015EC548FA7172C9E0873AFC8C9BF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -642,6 +650,86 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		21A7C11F7287E399015E57997D5814CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76A824F66A074823209DA31429AF47AB /* FZVideoEditing.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FZVideoEditing";
+				IBSC_MODULE = FZVideoEditing;
+				INFOPLIST_FILE = "Target Support Files/FZVideoEditing/ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = FZVideoEditing;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		2742CFDE7556EEBDF04DA3D3FAE32FE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76A824F66A074823209DA31429AF47AB /* FZVideoEditing.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FZVideoEditing/FZVideoEditing-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing.modulemap";
+				PRODUCT_MODULE_NAME = FZVideoEditing;
+				PRODUCT_NAME = FZVideoEditing;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		337D1169C8096228EF0FF54E71901782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76A824F66A074823209DA31429AF47AB /* FZVideoEditing.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FZVideoEditing/FZVideoEditing-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing.modulemap";
+				PRODUCT_MODULE_NAME = FZVideoEditing;
+				PRODUCT_NAME = FZVideoEditing;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -800,54 +888,6 @@
 			};
 			name = Debug;
 		};
-		96E37D56E69A7CDBE7C7FB50ED1FD052 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE9572304FC8BB1A4D90218324DF96F6 /* FZVideoEditing.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FZVideoEditing/FZVideoEditing-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing.modulemap";
-				PRODUCT_MODULE_NAME = FZVideoEditing;
-				PRODUCT_NAME = FZVideoEditing;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9BF441310E92CE0ECDA8FBE4DF08EAE3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE9572304FC8BB1A4D90218324DF96F6 /* FZVideoEditing.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FZVideoEditing";
-				IBSC_MODULE = FZVideoEditing;
-				INFOPLIST_FILE = "Target Support Files/FZVideoEditing/ResourceBundle-FZVideoEditing-FZVideoEditing-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = FZVideoEditing;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		ADF5A72411F718EB2A2C65FD64D27045 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD8EC136CAB0FDA7E1C80F81A9783C9A /* Pods-FZVideoEditing_Tests.release.xcconfig */;
@@ -882,9 +922,9 @@
 			};
 			name = Release;
 		};
-		BC9CB8187DFA6BA0567153EF7CA3BB7D /* Debug */ = {
+		B7837AEBD3F9B2EA20465CAE8F200EE7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE9572304FC8BB1A4D90218324DF96F6 /* FZVideoEditing.xcconfig */;
+			baseConfigurationReference = 76A824F66A074823209DA31429AF47AB /* FZVideoEditing.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/FZVideoEditing";
@@ -897,7 +937,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
-			name = Debug;
+			name = Release;
 		};
 		C277FAFDFB052A5B97F9668D38BE433C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -932,50 +972,9 @@
 			};
 			name = Debug;
 		};
-		CE875F927E696F562D9B2EFA9EAD66A8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE9572304FC8BB1A4D90218324DF96F6 /* FZVideoEditing.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FZVideoEditing/FZVideoEditing-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FZVideoEditing/FZVideoEditing.modulemap";
-				PRODUCT_MODULE_NAME = FZVideoEditing;
-				PRODUCT_NAME = FZVideoEditing;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3036685453D8157DF1F7E508866249B1 /* Build configuration list for PBXNativeTarget "FZVideoEditing-FZVideoEditing" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BC9CB8187DFA6BA0567153EF7CA3BB7D /* Debug */,
-				9BF441310E92CE0ECDA8FBE4DF08EAE3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -985,11 +984,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B2F12FDE0550EFA6944BF1A3E56BD9B /* Build configuration list for PBXNativeTarget "FZVideoEditing" */ = {
+		BCE25F53B34FD56294C954C4541EE3DE /* Build configuration list for PBXNativeTarget "FZVideoEditing-FZVideoEditing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				96E37D56E69A7CDBE7C7FB50ED1FD052 /* Debug */,
-				CE875F927E696F562D9B2EFA9EAD66A8 /* Release */,
+				21A7C11F7287E399015E57997D5814CD /* Debug */,
+				B7837AEBD3F9B2EA20465CAE8F200EE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5FD9145A92FE0199ACFCB06F16252AB /* Build configuration list for PBXNativeTarget "FZVideoEditing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				337D1169C8096228EF0FF54E71901782 /* Debug */,
+				2742CFDE7556EEBDF04DA3D3FAE32FE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

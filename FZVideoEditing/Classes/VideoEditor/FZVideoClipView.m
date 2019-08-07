@@ -31,11 +31,7 @@ alpha:1.0]
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.contentView addSubview:self.imageView];
-        self.imageView.backgroundColor = kColorRandom;
-        
+        [self imageView];
     }
     return self;
 }
@@ -44,13 +40,28 @@ alpha:1.0]
     self.imageView.image = image;
 }
 
+-(UIImageView *)imageView{
+    if (_imageView == nil) {
+        _imageView = [[UIImageView alloc]init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self.contentView addSubview:_imageView];
+        _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:00];
+        NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+        [self.contentView addConstraints:@[top,left,bottom,right]];
+    }
+    return _imageView;
+}
+
 @end
 
 
 @interface FZSelectedAreaView : UIView
 
-@property (nonatomic,copy) void(^leftPanBlock)(CGFloat value);
-@property (nonatomic,copy) void(^rightPanBlock)(CGFloat value);
+@property (nonatomic,copy) void(^leftPanBlock)(CGFloat value,UIGestureRecognizerState state);
+@property (nonatomic,copy) void(^rightPanBlock)(CGFloat value,UIGestureRecognizerState state);
 @property (nonatomic,strong) UIPanGestureRecognizer *leftPan;
 @property (nonatomic,strong) UIPanGestureRecognizer *rightPan;
 
@@ -88,13 +99,13 @@ alpha:1.0]
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:break;
         case UIGestureRecognizerStateChanged:{
-            CGPoint translation = [sender translationInView:self.superview];
-            if (self.leftPanBlock) {
-                self.leftPanBlock(translation.x);
-            }
         }break;
         case UIGestureRecognizerStateEnded:break;
         default:break;
+    }
+    CGPoint translation = [sender translationInView:self.superview];
+    if (self.leftPanBlock) {
+        self.leftPanBlock(translation.x,sender.state);
     }
     [sender setTranslation:CGPointZero inView:self.superview];
 }
@@ -102,13 +113,13 @@ alpha:1.0]
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:break;
         case UIGestureRecognizerStateChanged:{
-            CGPoint translation = [sender translationInView:self.superview];
-            if (self.rightPanBlock) {
-                self.rightPanBlock(translation.x);
-            }
         }break;
         case UIGestureRecognizerStateEnded:break;
         default:break;
+    }
+    CGPoint translation = [sender translationInView:self.superview];
+    if (self.rightPanBlock) {
+        self.rightPanBlock(translation.x,sender.state);
     }
     [sender setTranslation:CGPointZero inView:self.superview];
 }
@@ -117,7 +128,7 @@ alpha:1.0]
     if (_leftSilder == nil) {
         _leftSilder = [[UIImageView alloc]init];
         _leftSilder.userInteractionEnabled = YES;
-        _leftSilder.contentMode = UIViewContentModeScaleAspectFit;
+        _leftSilder.contentMode = UIViewContentModeScaleAspectFill;
         _leftSilder.image = [FZVideoEditingBundle fz_imageNamed:@"drag"];
         [self addSubview:_leftSilder];
         _leftSilder.translatesAutoresizingMaskIntoConstraints = NO;
@@ -134,7 +145,7 @@ alpha:1.0]
     if (_rightSilder == nil) {
         _rightSilder = [[UIImageView alloc]init];
         _rightSilder.userInteractionEnabled = YES;
-        _rightSilder.contentMode = UIViewContentModeScaleAspectFit;
+        _rightSilder.contentMode = UIViewContentModeScaleAspectFill;
         _rightSilder.image = [FZVideoEditingBundle fz_imageNamed:@"drag"];
         [self addSubview:_rightSilder];
         _rightSilder.translatesAutoresizingMaskIntoConstraints = NO;
@@ -177,8 +188,7 @@ UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout
 >
-@property (nonatomic, strong) UICollectionView* collectionView;
-@property (nonatomic, strong) NSMutableArray* images;
+
 
 @property (nonatomic,strong) UIView *leftMaskView;
 @property (nonatomic,strong) FZSelectedAreaView *selectedAreaView;
@@ -202,14 +212,13 @@ UICollectionViewDelegateFlowLayout
 #pragma mark -- UICollectionViewDataSource --
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
-    //return self.images.count;
+    return self.images.count;
 }
 
 - (FZVideoClipDisplayCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FZVideoClipDisplayCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-//    UIImage* image = self.images[indexPath.row];
-//    [cell setContentImage:image];
+    UIImage* image = self.images[indexPath.row];
+    [cell setContentImage:image];
     return cell;
 }
 
@@ -231,7 +240,7 @@ UICollectionViewDelegateFlowLayout
 #pragma mark -- UICollectionViewDelegateFlowLayout --
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(self.frame.size.width/20, self.frame.size.height);
+    return CGSizeMake(self.frame.size.width/(self.images.count?:1), self.frame.size.height);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsZero;
@@ -278,9 +287,9 @@ UICollectionViewDelegateFlowLayout
         [self addSubview:_collectionView];
         _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
         NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:20];
         NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20];
         [self addConstraints:@[top,left,bottom,right]];
         
     }
@@ -300,9 +309,9 @@ UICollectionViewDelegateFlowLayout
         [self addSubview:_leftMaskView];
         _leftMaskView.translatesAutoresizingMaskIntoConstraints = NO;
         NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_leftMaskView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_leftMaskView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_leftMaskView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.collectionView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
         NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_leftMaskView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_leftMaskView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.selectedAreaView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_leftMaskView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.selectedAreaView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:20];
         [self addConstraints:@[top,left,bottom,right]];
     }
     return _leftMaskView;
@@ -321,27 +330,40 @@ UICollectionViewDelegateFlowLayout
         [self addConstraints:@[top,left,bottom,right]];
         
         __weak __typeof(self) weakSelf = self;
-        _selectedAreaView.leftPanBlock = ^(CGFloat value) {
+        _selectedAreaView.leftPanBlock = ^(CGFloat value,UIGestureRecognizerState state) {
             CGRect frame = weakSelf.selectedAreaView.frame;
+            CGFloat minX = CGRectGetMinX(frame);
+            CGFloat sliderWidth = 20;
             weakSelf.selectedAreaLayoutLeft.constant += value;
             if (frame.size.width < 60 && value > 0){
-                CGFloat minX = CGRectGetMinX(frame);
                 weakSelf.selectedAreaLayoutLeft.constant = minX;
             }
             if (weakSelf.selectedAreaLayoutLeft.constant < 0) {
                 weakSelf.selectedAreaLayoutLeft.constant = 0;
             }
+            CGFloat begin = ((CGRectGetMinX(frame) + sliderWidth) - CGRectGetMinX(weakSelf.collectionView.frame))/CGRectGetWidth(weakSelf.collectionView.frame)*1.0;
             
+            if ([weakSelf.delegate respondsToSelector:@selector(clipView:begin:isOver:)]) {
+                [weakSelf.delegate clipView:weakSelf begin:begin isOver:state == UIGestureRecognizerStateEnded];
+            }
         };
-        _selectedAreaView.rightPanBlock = ^(CGFloat value) {
+        _selectedAreaView.rightPanBlock = ^(CGFloat value,UIGestureRecognizerState state) {
             CGRect frame = weakSelf.selectedAreaView.frame;
+            CGFloat maX = CGRectGetMaxX(frame);
+            CGFloat sliderWidth = 20;
             weakSelf.selectedAreaLayoutRight.constant += value;
             if (frame.size.width < 60 && value < 0){
-                CGFloat maX = CGRectGetMaxX(frame);
                 weakSelf.selectedAreaLayoutRight.constant = -(weakSelf.frame.size.width-maX);
             }
             if (weakSelf.selectedAreaLayoutRight.constant > 0) {
                 weakSelf.selectedAreaLayoutRight.constant = 0;
+            }
+            CGFloat begin = ((CGRectGetMinX(frame) + sliderWidth) - CGRectGetMinX(weakSelf.collectionView.frame))/CGRectGetWidth(weakSelf.collectionView.frame)*1.0;
+            
+            CGFloat end = ((CGRectGetMaxX(frame) - sliderWidth) - CGRectGetMinX(weakSelf.collectionView.frame))/CGRectGetWidth(weakSelf.collectionView.frame)*1.0;
+            
+            if ([weakSelf.delegate respondsToSelector:@selector(clipView:end:isOver:)]) {
+                [weakSelf.delegate clipView:weakSelf end:end isOver:state == UIGestureRecognizerStateEnded];
             }
         };
     }
@@ -355,9 +377,9 @@ UICollectionViewDelegateFlowLayout
         [self insertSubview:_rightMaskView belowSubview:self.selectedAreaView];
         _rightMaskView.translatesAutoresizingMaskIntoConstraints = NO;
         NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_rightMaskView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_rightMaskView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.selectedAreaView attribute:NSLayoutAttributeRight multiplier:1.0 constant:-10];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:_rightMaskView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.selectedAreaView attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20];
         NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:_rightMaskView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_rightMaskView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:_rightMaskView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.collectionView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
         [self addConstraints:@[top,left,bottom,right]];
     }
     return _leftMaskView;

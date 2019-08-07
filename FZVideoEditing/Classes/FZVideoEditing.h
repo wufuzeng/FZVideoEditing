@@ -10,6 +10,7 @@
 
 
 #import "FZVideoPlayerView.h"
+#import "FZVideoDisplayView.h"
 #import "FZVideoClipView.h"
 #import "FZVideoEditor.h"
 #import "FZAVCommand.h"
